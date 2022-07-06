@@ -10,6 +10,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    first_name = db.Column(db.String(20), nullable=False)
+    last_name = db.Column(db.String(20), nullable=False)
+    bio = db.Column(db.String(255), nullable=False)
+    profile_picture = db.Column(db.String(255), default="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg")
+    private = db.Column(db.Boolean(), default=False)
+
 
     @property
     def password(self):
@@ -26,5 +32,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'profilePicture': self.profile_picture,
+            'bio': self.bio,
+            'private': self.private
         }
