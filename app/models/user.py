@@ -1,3 +1,4 @@
+from .follow import Follow
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -16,7 +17,14 @@ class User(db.Model, UserMixin):
     profile_picture = db.Column(db.String(255), default="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg")
     private = db.Column(db.Boolean(), default=False)
 
-
+    # Relationships
+    posts = db.relationship("Post", back_populates="user", cascade="all, delete-orphan")
+    comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
+    likes = db.relationship("Like", back_populates="user", cascade="all, delete-orphan")
+    following = db.relationship("User", secondary=Follow,
+                    primaryjoin= id == Follow.follower_id,
+                    secondaryjoin= id == Follow.following_id,
+                    backref="follower")
     @property
     def password(self):
         return self.hashed_password
@@ -37,5 +45,6 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'profilePicture': self.profile_picture,
             'bio': self.bio,
-            'private': self.private
+            'private': self.private,
+            "posts": [post.id for post in self.posts],
         }
