@@ -52,4 +52,6 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'private': self.private,
             "posts": [post.id for post in self.posts],
+            "likes": [like.id for like in self.likes],
+            "comments": [comment.id for comment in self.comments],
         }
