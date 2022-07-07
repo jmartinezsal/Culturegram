@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import authlogo from '../../images/auth-logo.svg'
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -44,6 +46,8 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
+      <img className='auth-logo' src={authlogo} alt="authlogo" />
+      <p>Log in to see photos and videos from all across the world.</p>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
