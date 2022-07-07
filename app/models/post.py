@@ -15,7 +15,8 @@ class Post(db.Model):
   comments = db.relationship("Comment", back_populates="posts", cascade="all, delete-orphan")
   likes = db.relationship("Like", back_populates="posts", cascade="all, delete-orphan")
   images = db.relationship("Image", back_populates="posts", cascade="all, delete-orphan")
-  hashtags = db.relationship("Hashtag", back_populates="posts", cascade="all, delete-orphan")
+  hashtags = db.relationship("Hashtag", secondary="Post_Hashtag_Join",
+              back_populates="posts", cascade="all, delete-orphan")
 
 
   def to_dict(self):

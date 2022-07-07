@@ -12,7 +12,7 @@ def all_follows():
   return {follow.id: follow.to_dict() for follow in follows}
 
 
-@follow_routes.route('<int:following_id>', ["POST"])
+@follow_routes.route('<int:following_id>', methods=["POST"])
 @login_required
 def follow(following_id):
   new_follow = user_following(
@@ -24,9 +24,9 @@ def follow(following_id):
   return {"success": "You are now following this person"}
 
 
-@follow_routes.route('', ["DELETE"])
+@follow_routes.route('', methods=["DELETE"])
 @login_required
-def follow(following_id):
+def unfollow(following_id):
 
   db.session.delete(unfollow)
   db.seesion.commit()
