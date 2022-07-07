@@ -36,9 +36,9 @@ def upgrade():
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id',sa.Integer(), nullable=False),
-    sa.Column('content', sa.String(length=500), nullable=False),
+    sa.Column('content', sa.String(length=200), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp()),
-    sa.Column('updated_at', sa.DateTime(), nullable=False, onupdate=sa.func.current_timestamp()),
+    sa.Column('updated_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp(), onupdate=sa.func.current_timestamp()),
     sa.PrimaryKeyConstraint('id'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'])
     )
@@ -49,7 +49,7 @@ def upgrade():
     sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('comment', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp()),
-    sa.Column('updated_at', sa.DateTime(), nullable=False, onupdate=sa.func.current_timestamp()),
+    sa.Column('updated_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp(), onupdate=sa.func.current_timestamp()),
     sa.PrimaryKeyConstraint('id'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'])
