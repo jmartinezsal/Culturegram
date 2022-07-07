@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
     bio = db.Column(db.String(255), nullable=False)
-    profile_picture = db.Column(db.String(255), default="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg")
+    profile_picture = db.Column(db.String(255), nullable=False, default="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg")
     private = db.Column(db.Boolean(), default=False)
 
     # Relationships
@@ -22,8 +22,8 @@ class User(db.Model, UserMixin):
     comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
     likes = db.relationship("Like", back_populates="user", cascade="all, delete-orphan")
     following = db.relationship("User", secondary=Follow,
-                    primaryjoin= id == Follow.follower_id,
-                    secondaryjoin= id == Follow.following_id,
+                    primaryjoin= id == Follow.follower,
+                    secondaryjoin= id == Follow.following,
                     backref="follower")
     @property
     def password(self):

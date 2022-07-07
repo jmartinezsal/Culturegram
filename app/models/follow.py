@@ -7,8 +7,8 @@ class Follow(db.Model):
   __tablename__ = 'follows'
 
   id = db.Column(db.Integer, primary_key=True)
-  follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-  following_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+  follower = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+  following = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
   blocked = db.Column(db.Boolean, nullable=False, default=False)
   created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
   updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
