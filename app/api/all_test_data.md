@@ -30,3 +30,15 @@
 {
   "content": "This is the edited content for the post"
 }
+
+
+### Comments POST AND PUT data
+* Post
+{
+  "comment": "This is the comment for the post"
+}
+
+* PUT
+{
+  "comment": "This is the edited comment for the post"
+}

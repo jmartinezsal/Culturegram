@@ -65,9 +65,16 @@ def upgrade():
 
     op.create_table('hashtags',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('hashtag', sa.String(length=20), nullable=False),
     sa.PrimaryKeyConstraint('id'),
+    )
+
+    op.create_table('post_hashtags_join',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('post_id', sa.Integer(), nullable=False),
+    sa.Column('hashtag_id', sa.Integer(), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.ForeignKeyConstraint(['hashtag_id'], ['hashtags.id']),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'])
     )
 
@@ -98,6 +105,7 @@ def downgrade():
     op.drop_table('comments')
     op.drop_table('images')
     op.drop_table('hashtags')
+    op.drop_table('post_hashtags_join')
     op.drop_table('likes')
     op.drop_table('user_following')
     op.drop_table('posts')
