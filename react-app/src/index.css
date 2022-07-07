@@ -1,1 +1,37 @@
 /* TODO Add site wide styles */
+@import url('./css/SplashPage.css');
+
+
+:root {
+  --main-border: 1px solid #bfbfbf;
+  --btn-opacity: opacity .3s ease-in-out;
+}
+
+#root,
+body,
+html {
+  height: 100%;
+  margin: 0px;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-family: Segoe UI ,Roboto,Helvetica,Arial,sans-serif;
+}
+
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+    margin: 0px;
+}
+
+.bold{
+  font-weight: bold;
+}

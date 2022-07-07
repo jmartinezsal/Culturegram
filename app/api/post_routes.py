@@ -51,6 +51,7 @@ def edit_post(post_id):
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @post_routes.route('/delete/<int:post_id>', methods=['DELETE'])
+@login_required
 def delete_post(post_id):
   """
   Delete a post made by the user

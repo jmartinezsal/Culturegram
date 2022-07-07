@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import authlogo from '../../images/auth-logo.svg'
+import Demo from './Demo';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -31,33 +33,38 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form className="auth-form" onSubmit={onLogin}>
+      <img className='auth-logo' src={authlogo} alt="authlogo" />
+      <div className="auth-input-container">
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+          />
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          />
+      </div>
+      <button className="auth-btn" type='submit'>Log In</button>
+      <div className="auth-divider">
+        <div className="line">
+        </div>
+        <p>or</p>
+        <div className="line">
+        </div>
+      </div>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
+      <Demo />
     </form>
   );
 };
