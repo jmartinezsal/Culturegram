@@ -1,4 +1,4 @@
-"""create_users_table
+"""create_tables
 
 Revision ID: ffdc0a98111c
 Revises:
@@ -27,7 +27,8 @@ def upgrade():
     sa.Column('first_name', sa.String(length=20), nullable=False),
     sa.Column('last_name', sa.String(length=20), nullable=False),
     sa.Column('bio', sa.String(length=255), nullable=False),
-    sa.Column('profile_picture', sa.String(length=255), nullable=False),
+    sa.Column('profile_picture', sa.String(length=255), nullable=False, default="https://i.pinimg.com/474x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg" ),
+    sa.Column('private', sa.Boolean(), nullable=False, default=False ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -79,7 +80,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'])
     )
 
-    op.create_table('follows',
+    op.create_table('user_following',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('following', sa.Integer(), nullable=False),
     sa.Column('follower', sa.Integer(), nullable=False),
@@ -98,7 +99,7 @@ def downgrade():
     op.drop_table('images')
     op.drop_table('hashtags')
     op.drop_table('likes')
-    op.drop_table('follows')
+    op.drop_table('user_following')
     op.drop_table('posts')
     op.drop_table('users')
     # ### end Alembic commands ###

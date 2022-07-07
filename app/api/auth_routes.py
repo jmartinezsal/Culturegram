@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
-from app.forms import LoginForm
-from app.forms import SignUpForm
+from app.forms import LoginForm, SignUpForm, ProfileForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -65,16 +64,48 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
             first_name = form.data['first_name'],
             last_name = form.data['last_name'],
-            
+            bio = form.data['bio'],
+            profile_picture = form.data['profile_picture'],
+            private = form.data['private']
         )
         db.session.add(user)
         db.session.commit()
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@auth_routes.route('/edit/<int:user_id>', methods=['PUT'])
+def edit_profile_info(user_id):
+    """
+    Edit user profile information
+    """
+    user = User.query.get(user_id)
+
+    form = ProfileForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user.first_name = form.data['first_name'],
+        user.last_name = form.data['last_name'],
+        user.bio = form.data['bio'],
+        user.profile_picture = form.data['profile_picture'],
+        user.private = form.data['private']
+
+        db.session.commit()
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@auth_routes.route('/delete/<int:user_id>', methods=['DELETE'])
+def deleete_profile(user_id):
+    """
+    Delete the current profile
+    """
+    user = User.query.get(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    return {"successful": "This user has been deleted with all of their content."}
 
 
 @auth_routes.route('/unauthorized')

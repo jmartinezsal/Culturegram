@@ -10,7 +10,7 @@ class Like(db.Model):
 
   # Relationship
   user = db.relationship("User", back_populates="likes")
-  posts = db.relationship("Post", back_populates="posts")
+  posts = db.relationship("Post", back_populates="likes")
 
   def to_dict(self):
     return {

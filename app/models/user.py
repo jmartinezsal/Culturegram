@@ -1,8 +1,12 @@
-from .follow import Follow
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+user_following = db.Table(
+    'user_following', db.Model.metadata,
+    db.Column("follower", db.ForeignKey('users.id'), primary_key=True, nullable=False ),
+    db.Column("following", db.ForeignKey('users.id'), primary_key=True, nullable=False )
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -14,17 +18,18 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
     bio = db.Column(db.String(255), nullable=False)
-    profile_picture = db.Column(db.String(255), nullable=False, default="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg")
-    private = db.Column(db.Boolean(), default=False)
+    profile_picture = db.Column(db.String(255), nullable=False, default="https://i.pinimg.com/474x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg")
+    private = db.Column(db.Boolean(), default=False, nullable=False)
 
     # Relationships
     posts = db.relationship("Post", back_populates="user", cascade="all, delete-orphan")
     comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
     likes = db.relationship("Like", back_populates="user", cascade="all, delete-orphan")
-    following = db.relationship("User", secondary=Follow,
-                    primaryjoin= id == Follow.follower,
-                    secondaryjoin= id == Follow.following,
-                    backref="follower")
+    followings = db.relationship("User", secondary=user_following,
+                    primaryjoin= id == user_following.c.follower,
+                    secondaryjoin= id ==user_following.c.following,
+                    backref="followers",  cascade="all, delete"
+                    )
     @property
     def password(self):
         return self.hashed_password

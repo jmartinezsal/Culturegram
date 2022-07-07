@@ -1,6 +1,5 @@
 from sqlalchemy.sql import func
 from .db import db
-from . import Like
 
 class Post(db.Model):
   __tablename__ = 'posts'
