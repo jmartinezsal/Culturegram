@@ -1,5 +1,12 @@
 from .db import db
 
+post_hashtags_join = db.Table('post_hashtags_join',
+                              db.Model.metadata,
+                              db.Column('posts', db.ForeignKey('posts.id'), nullable=False, primary_key=True),
+                              db.Column('hastags', db.ForeignKey('hashtags.id'), nullable=False, primary_key=True)
+                              )
+
+
 class Hashtag(db.Model):
   __tablename__ = 'hashtags'
 
@@ -7,7 +14,7 @@ class Hashtag(db.Model):
   hashtag = db.Column(db.String(20), nullable=False)
 
   # Relationship
-  posts = db.relationship("Post", secondary="Post_Hashtag_Join", back_populates="hashtags")
+  post_hashtags = db.relationship("Post", secondary=post_hashtags_join, back_populates="hashtag_posts")
 
   def to_dict(self):
     return {
