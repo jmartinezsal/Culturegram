@@ -2,6 +2,7 @@ import logo from '../../../images/logo.svg'
 import ProfileButton from './Profilebutton';
 import { VscDiffAdded, VscHome } from 'react-icons/vsc';
 import { Link, NavLink } from 'react-router-dom';
+import CreatePostButton from '../Modal/CreatePost';
 
 
 function Navigation() {
@@ -9,15 +10,15 @@ function Navigation() {
 
   return (
     <div className="navigation">
-      <NavLink to="/">
+      <Link to="/">
         <img src={logo} alt="logo"></img>
-      </NavLink>
+      </Link>
       <div className='right-nav'>
-        <Link to="/">
+        <NavLink to="/" exact={true}>
           <VscHome className='nav-icons' />
-        </Link>
-        <NavLink to="">
-          <VscDiffAdded className='nav-icons' />
+        </NavLink>
+        <NavLink to="/post_modal">
+          <CreatePostButton />
         </NavLink>
         <ProfileButton />
       </div>

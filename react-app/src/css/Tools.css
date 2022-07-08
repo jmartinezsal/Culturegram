@@ -1,0 +1,48 @@
+/* Image Slider styles*/
+
+.slider {
+	position: relative;
+}
+
+.slider img {
+	width: 35vh;
+	height: 35vh;
+	object-fit: cover;
+	border-radius: 20px;
+}
+
+.slider .react-icons {
+	color: white;
+	font-size: 1.5rem;
+	z-index: 1;
+	cursor: pointer;
+	padding: 2px;
+}
+
+.right-clicker {
+	position: absolute;
+	top: 50%;
+	right: 2%;
+}
+
+.left-clicker {
+	position: absolute;
+	top: 50%;
+	left: 2%;
+}
+
+/*Image Uploader styles  */
+.image-uploader-btn {
+	background-color: rgba(5, 157, 5, 0.873);
+	color: white;
+}
+
+.image-remove-btn{
+	background-color: rgba(157, 5, 5, 0.873);
+	color: white;
+}
+
+.image-btn{
+  width: 100%;
+  padding: 2px 5px;
+}
