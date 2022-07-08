@@ -1,0 +1,16 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 40px;
+  height: fit-content;
+  width: auto;
+  border-bottom: var(--main-border);
+
+}
+
+
+.profile-btn img{
+  height: 35px;
+  border-radius: 50%;;
+}

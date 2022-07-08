@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import UserViewPage from './components/UserViewPage';
 import { loadPosts } from './store/post';
 import { loadComments } from './store/comment';
+import Navigation from './components/UserPage/Navigation';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +32,9 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        {user && }
+        {user &&
+        <Navigation />
+        }
         <Route path='/' exact={true}>
           <UserViewPage />
         </Route>
