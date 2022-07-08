@@ -1,7 +1,7 @@
 from email.policy import default
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField
-from wtforms.validators import DataRequired, ValidationError, Length
+from wtforms import StringField
+from wtforms.validators import ValidationError, Length, InputRequired, EqualTo
 from app.models import User
 
 
@@ -22,11 +22,9 @@ def username_exists(form, field):
 
 
 class SignUpForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=1, max=20, message="Bio must be between 1 and 20 characters"), username_exists])
-    email = StringField('Email', validators=[DataRequired(), user_exists])
-    password = StringField('Password', validators=[DataRequired()])
-    first_name = StringField('First Name', validators=[DataRequired(),  Length(min=1, max=20, message="Bio must be between 1 and 20 characters")])
-    last_name = StringField('Last Name', validators=[DataRequired(), Length(min=1, max=20, message="Bio must be between 1 and 20 characters")])
-    bio = StringField('Bio', validators=[DataRequired(), Length(min=1, max=255, message="Bio must be between 5 and 255 characters")])
-    profile_picture = StringField('Profile Picture', default="https://i.pinimg.com/474x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg")
-    private = BooleanField('Private', default=False)
+    firstName = StringField('First Name', validators=[InputRequired('First Name is required.')])
+    lastName = StringField('Last Name', validators=[InputRequired("Last Name is required.")])
+    username = StringField('Username', validators=[InputRequired("Username is required."), Length(min=3, max=20, message="Username must be between 5 and 20 characters."), username_exists])
+    email = StringField('Email', validators=[InputRequired("Email is required."), user_exists])
+    password = StringField('Password', validators=[InputRequired("Password is required")])
+    bio = StringField('Bio', validators=[InputRequired("A bio is required."), Length(min=3, max=255, message="Bio must be between 3 and 255 characters.")])

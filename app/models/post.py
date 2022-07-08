@@ -1,4 +1,5 @@
 from sqlalchemy.sql import func
+from . import post_hashtags_join
 from .db import db
 
 class Post(db.Model):
@@ -15,8 +16,8 @@ class Post(db.Model):
   comments = db.relationship("Comment", back_populates="posts", cascade="all, delete-orphan")
   likes = db.relationship("Like", back_populates="posts", cascade="all, delete-orphan")
   images = db.relationship("Image", back_populates="posts", cascade="all, delete-orphan")
-  hashtags = db.relationship("Hashtag", secondary="Post_Hashtag_Join",
-              back_populates="posts", cascade="all, delete-orphan")
+  hashtag_posts = db.relationship("Hashtag", secondary=post_hashtags_join,
+              back_populates="post_hashtags")
 
 
   def to_dict(self):

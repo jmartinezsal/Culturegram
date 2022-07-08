@@ -34,22 +34,27 @@ const LoginForm = () => {
 
   return (
     <form className="auth-form" onSubmit={onLogin}>
-      <img className='auth-logo' src={authlogo} alt="authlogo" />
+      <img className='auth-logo' src={authlogo} alt="auth ogo" />
+      <div className='auth-errors'>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error.includes(':') ? error.split(':')[1] : error}</div>
+        ))}
+      </div>
       <div className="auth-input-container">
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
+        <input
+          name='email'
+          type='text'
+          placeholder='Email'
+          value={email}
+          onChange={updateEmail}
+        />
+        <input
+          name='password'
+          type='password'
+          placeholder='Password'
+          value={password}
+          onChange={updatePassword}
+        />
       </div>
       <button className="auth-btn" type='submit'>Log In</button>
       <div className="auth-divider">
@@ -58,11 +63,6 @@ const LoginForm = () => {
         <p>or</p>
         <div className="line">
         </div>
-      </div>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
       </div>
       <Demo />
     </form>
