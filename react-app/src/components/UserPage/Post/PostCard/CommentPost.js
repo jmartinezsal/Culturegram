@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import {useState } from 'react';
+import {useEffect, useState } from 'react';
 
 import {createComment} from '../../../../store/comment';
 import { loadPosts } from '../../../../store/post';
@@ -8,6 +8,17 @@ import { loadPosts } from '../../../../store/post';
 function CommentPost({postId}){
   const dispatch = useDispatch();
   const [comment, setComment] = useState('')
+  const [disabled, setDisabled] = useState(true)
+  const [length, setLength] = useState(0);
+
+  useEffect(() =>{
+    if(comment.length > 0 && comment.length <= 255){
+      setDisabled(false)
+      setLength(comment.length)
+    } else{
+      setDisabled(true)
+    }
+  },[comment])
 
   const handleSubmit = (e) =>{
     e.preventDefault();
@@ -15,9 +26,10 @@ function CommentPost({postId}){
       postId,
       comment
     }
-    dispatch(createComment(payload))
+     dispatch(createComment(payload))
     dispatch(loadPosts())
     setComment('')
+    setLength(0)
   }
 
   const updateComment = (e) =>{
@@ -32,8 +44,12 @@ function CommentPost({postId}){
       value={comment}
       placeholder="Add a comment... "
       onChange={updateComment}
+      minLength={1}
+      maxLength={255}
       />
-      <p onClick={handleSubmit} >Post</p>
+      <p className="length">{length}/255</p>
+      <button onClick={handleSubmit} className={disabled ? "active" : ""}
+      disabled={disabled}>Post</button>
     </form>
   )
 

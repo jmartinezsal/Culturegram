@@ -38,20 +38,22 @@ function PostCard({ post, user }) {
         <ImageSlider images={post.images} type="profile" />
       </div>
       <div className="post-card-bottom">
-        <div className="post-card-btns">
-          <FaRegCommentDots />
+        <div className="post-card-btns post-card-content">
           <FaRegHeart />
+          <FaRegCommentDots />
         </div>
-        <div className="post-card-liked">
+        <div className="post-card-liked post-card-content">
           "How many people liked this"
         </div>
-        <div className="post-card-header">
+        <div className="post-card-header post-card-content">
           <p className="bold">{user.username}</p> <p>{post.content}</p>
         </div>
-        <p>{post.comments.length === 0 ? "No comments" :  `View all ${post.comments.length} comments`} </p>
-        <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>
-        <CommentPost postId={post.id} />
+        <div className="light post-card-content">
+          <p>{post.comments.length === 0 ? "No comments" : `View all ${post.comments.length} comments`} </p>
+          <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>
+        </div>
       </div>
+      <CommentPost postId={post.id} />
     </div>
   )
 }
