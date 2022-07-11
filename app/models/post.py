@@ -23,7 +23,7 @@ class Post(db.Model):
   def to_dict(self):
     return {
       "id":self.id,
-      "userId": self.user_id,
+      "user": self.user.to_dict(),
       "content": self.content,
       "createdAt": self.created_at,
       "updatedAt": self.updated_at,

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GrFormPreviousLink } from 'react-icons/gr';
 
 import ImageSlider from "../../../Tools/ImageSlider"
-import { createPost, uploadImage } from "../../../../store/post";
+import { createPost, uploadImage, loadPosts } from "../../../../store/post";
 import { useHistory } from "react-router-dom";
 
 function ModalSubmit({ images, Previous, setCreateModal }) {
@@ -50,6 +50,7 @@ function ModalSubmit({ images, Previous, setCreateModal }) {
       await addImages(imageFiles, post_id)
       history.push('/')
       setCreateModal(false);
+      await dispatch(loadPosts())
     }
     setErrors(post);
   }

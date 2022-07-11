@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import { BsSuitHeart } from 'react-icons/bs';
+import { FaRegHeart } from 'react-icons/fa';
 import { VscAccount } from 'react-icons/vsc';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 
@@ -49,7 +49,7 @@ function ProfileButton() {
           </div>
           <div className="profile-nav-selection">
             <Link to="/liked">
-              <BsSuitHeart />
+              <FaRegHeart />
               <p className="dropdown-txt">Liked</p>
             </Link>
           </div>

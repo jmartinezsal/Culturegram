@@ -31,12 +31,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Switch>
         {user &&
         <Navigation />
         }
-        <Route path='/' exact={true}>
-          <UserViewPage />
+      <Switch>
+        <Route path='/' >
+          <UserViewPage sessionUser={user}/>
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
