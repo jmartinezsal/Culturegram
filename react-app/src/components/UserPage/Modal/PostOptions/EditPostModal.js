@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GrFormPreviousLink } from 'react-icons/gr';
 
 import ImageSlider from "../../../Tools/ImageSlider"
-import { createPost, uploadImage, loadPosts } from "../../../../store/post";
+import { updatePost } from "../../../../store/post";
 import { useHistory } from "react-router-dom";
-import { authenticate } from "../../../../store/session";
 
-function ModalSubmit({ images, Previous, setCreateModal }) {
+function EditPostModal({post, setEditModal, setOptionsModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
+  const images = post.images;
+  const id  = post.id;
 
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState(post.content);
   const [hashtags, setHashtags] = useState([]);
   const [errors, setErrors] = useState([]);
 
@@ -24,34 +24,19 @@ function ModalSubmit({ images, Previous, setCreateModal }) {
     setHashtags(e.target.value)
   }
 
-  const addImages = async(images, post_id) => {
-    for(let i= 0; i < images.length; i++){
-      let image = images[i];
-
-      const imageData = {
-        "image": image,
-        "url": image.name.replace(/ /g,"+"),
-        "post_id": post_id,
-      };
-
-      await dispatch(uploadImage(imageData));
-  }
-  }
-
   const submitHandler = async (e) => {
     e.preventDefault();
-    const imageFiles = images.map((image) => image.file)
     const data = {
-      content
+      content,
+      id
     }
 
-    let post = await dispatch(createPost(data))
+    let post = await dispatch(updatePost(data))
     const post_id = post.id;
     if (Number.isInteger(post_id)) {
-      await addImages(imageFiles, post_id)
       history.push('/')
-      setCreateModal(false);
-      await dispatch(loadPosts())
+      setEditModal(false);
+      setOptionsModal(false);
     }
     setErrors(post);
   }
@@ -59,12 +44,12 @@ function ModalSubmit({ images, Previous, setCreateModal }) {
   return (
     <div className="post-modal">
       <div className="modal-header submit-header">
-        <GrFormPreviousLink className="modal-left-btn btn" onClick={Previous} />
-        <p>Preview and submit!</p>
-        <p className="modal-right-btn submit btn" onClick={submitHandler}>Share</p>
+        <p onClick={()=> setEditModal(false)}>Cancel</p>
+        <p>Edit info</p>
+        <p className="modal-right-btn submit btn" onClick={submitHandler}>Done</p>
       </div>
       <div className="submit-modal">
-        <ImageSlider images={images} type="post" />
+        <ImageSlider images={images}  />
         <form className="form-modal" onSubmit={submitHandler}>
                     <div className='top'>
             <img src={user.profilePicture} alt="profile"></img>
@@ -96,4 +81,4 @@ function ModalSubmit({ images, Previous, setCreateModal }) {
   )
 }
 
-export default ModalSubmit;
+export default EditPostModal;

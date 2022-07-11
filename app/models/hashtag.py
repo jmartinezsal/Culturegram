@@ -3,7 +3,7 @@ from .db import db
 post_hashtags_join = db.Table('post_hashtags_join',
                               db.Model.metadata,
                               db.Column('posts', db.ForeignKey('posts.id'), nullable=False, primary_key=True),
-                              db.Column('hastags', db.ForeignKey('hashtags.id'), nullable=False, primary_key=True)
+                              db.Column('hashtags', db.ForeignKey('hashtags.id'), nullable=False, primary_key=True)
                               )
 
 

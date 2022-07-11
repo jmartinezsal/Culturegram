@@ -1,5 +1,8 @@
 /* Image Slider styles*/
 
+.slider {
+	position: relative;
+}
 
 .slider .react-icons {
 	color: #bfbfbfbc;

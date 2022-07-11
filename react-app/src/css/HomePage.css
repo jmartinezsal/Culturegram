@@ -1,0 +1,60 @@
+/* Home Page styles */
+.home-page{
+  width: 100%;
+  height: 100%;
+}
+
+
+.home-page .post-card-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 20px auto;
+
+
+}
+
+.home-page .post-card-container .post-card{
+  width: 450px;
+  height: 600px;
+  border: var(--main-border);
+  border-radius: 20px;
+  margin-top: 20px;
+
+}
+
+.post-card-top{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: var(--main-border);
+}
+
+.post-card .left-top{
+  display: flex;
+  align-items: center;
+  margin-right: auto ;
+
+}
+
+.post-card .left-top img{
+  width: 30px;
+	height: 30px;
+	object-fit: cover;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.post-card .post-card-top .react-icons{
+  margin-right: 20px;
+  font-size: 1.3rem;
+}
+
+.post-card .slider img{
+  box-sizing: border-box;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+
+}

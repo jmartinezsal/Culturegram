@@ -111,9 +111,7 @@ export const uploadImage = (imageData) => async dispatch => {
   formData.append("url", url);
   formData.append("post_id", post_id);
   formData.append("image", image);
-
-  console.log(formData)
-
+  
   const res = await fetch('/api/images/upload', {
     method: "POST",
     body: formData,
