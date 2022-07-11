@@ -28,7 +28,7 @@ function PostCard({ post, user }) {
       </div>
       {optionModal && (
         <Modal onClose={() => setOptionsModal(false)}>
-          <PostOptions setOptionsModal={setOptionsModal} postId={post.id}/>
+          <PostOptions setOptionsModal={setOptionsModal} post={post}/>
         </Modal>
       )
       }
