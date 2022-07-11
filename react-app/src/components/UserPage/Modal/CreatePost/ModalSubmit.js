@@ -5,7 +5,6 @@ import { GrFormPreviousLink } from 'react-icons/gr';
 import ImageSlider from "../../../Tools/ImageSlider"
 import { createPost, uploadImage, loadPosts } from "../../../../store/post";
 import { useHistory } from "react-router-dom";
-import { authenticate } from "../../../../store/session";
 
 function ModalSubmit({ images, Previous, setCreateModal }) {
   const dispatch = useDispatch();

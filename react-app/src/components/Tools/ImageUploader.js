@@ -66,7 +66,7 @@ const ImageUploader = ({ images, setImages, type }) => {
 								<div key={index} className="image-item">
 									<img src={image["data_url"]} alt="" width="100" />
 									<div className="image-item-btn-wrapper">
-										{/* <button className="image-btn" onClick={() => onImageUpdate(index)}>Update</button> */}
+										<button className="image-btn" onClick={() => onImageUpdate(index)}>Update</button>
 										<button className="image-btn image-remove-btn" onClick={() => onImageRemove(index)}>Remove</button>
 									</div>
 								</div>

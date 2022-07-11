@@ -17,9 +17,7 @@ function Navigation() {
         <NavLink to="/" exact={true}>
           <VscHome className='nav-icons' />
         </NavLink>
-        <NavLink to="/post_modal">
           <CreatePostButton />
-        </NavLink>
         <ProfileButton />
       </div>
     </div>

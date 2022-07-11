@@ -8,7 +8,7 @@ function HomePage() {
     <div className="home-page">
       <div className="post-card-container">
         {posts.map(post => (
-          <PostCard post={post} user={post.user} />
+          <PostCard post={post} user={post.user} key={post.id}/>
         ))}
       </div>
     </div>
