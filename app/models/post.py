@@ -30,5 +30,5 @@ class Post(db.Model):
       "comments": [comment.id for comment in self.comments],
       "likes": [like.id for like in self.likes],
       "images": [image.to_dict() for image in self.images],
-      "hashtags":[hashtag.to_dict() for hashtag in self.hashtags]
+      # "hashtags":[hashtag.to_dict() for hashtag in self.hashtags]
     }

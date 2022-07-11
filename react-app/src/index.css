@@ -7,7 +7,7 @@
 
 :root {
   --main-border: 1px solid #bfbfbf;
-  --btn-opacity: opacity .3s ease-in-out;
+  --btn-opacity-transition: opacity 1s ease-in-out;
   --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -40,11 +40,11 @@ p {
   font-weight: bold;
 }
 
-button{
+button, .btn{
   cursor: pointer;
+  transition: var(--btn-opacity-transiton);
 }
 
-button:hover{
-  opacity: var(--btn-opacity);
-
+button:hover, .btn:hover{
+  opacity: .7
 }

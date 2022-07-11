@@ -5,7 +5,7 @@ import { Modal } from "../../../../context/Modal";
 import CreatePostModal from "./CreatePostModal";
 
 function CreatePostButton() {
-  const [createModal, setCreateModal] = useState(true);
+  const [createModal, setCreateModal] = useState(false);
 
 
   return (
@@ -13,7 +13,7 @@ function CreatePostButton() {
       <VscDiffAdded className='nav-icons' onClick={() => setCreateModal(true)}/>
       {createModal &&
       <Modal onClose={() => setCreateModal(false)}>
-        <CreatePostModal setModal={setCreateModal} />
+        <CreatePostModal setCreateModal={setCreateModal} />
       </Modal>
       }
 

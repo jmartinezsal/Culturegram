@@ -1,6 +1,6 @@
 import logo from '../../../images/logo.svg'
 import ProfileButton from './Profilebutton';
-import { VscDiffAdded, VscHome } from 'react-icons/vsc';
+import {  VscHome } from 'react-icons/vsc';
 import { Link, NavLink } from 'react-router-dom';
 import CreatePostButton from '../Modal/CreatePost';
 
