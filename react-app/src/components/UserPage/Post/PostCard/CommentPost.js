@@ -14,11 +14,11 @@ function CommentPost({postId}){
   useEffect(() =>{
     if(comment.length > 0 && comment.length <= 255){
       setDisabled(false)
-      setLength(comment.length)
     } else{
       setDisabled(true)
     }
-  },[comment])
+    setLength(comment.length)
+  },[comment.length])
 
   const handleSubmit = (e) =>{
     e.preventDefault();

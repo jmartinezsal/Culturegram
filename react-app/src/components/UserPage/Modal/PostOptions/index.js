@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 import { Modal } from "../../../../context/Modal";
 import DeletePostModal from "./DeletePostModal";
 import EditPostModal from './EditPostModal';
+import PostModal from "../PostModal";
 
-function PostOptions({ post, setOptionsModal }) {
+function PostOptions({ post, setOptionsModal, comments }) {
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-
+  const [postModal, setPostModal] = useState(false);
 
   return (
     <div className="post-options-modal" >
@@ -27,7 +28,12 @@ function PostOptions({ post, setOptionsModal }) {
         </Modal>
       }
       <div className="options">
-        <p>Go to post</p>
+        <p onClick={() => setPostModal(true)}>Go to post</p>
+        {postModal &&
+          <Modal onClose={() => setPostModal(false)}>
+            <PostModal setPostModal={setPostModal} post={post} comments={comments} />
+          </Modal>
+        }
       </div>
       <div className="options">
         <p onClick={() => setOptionsModal(false)}>Cancel</p>

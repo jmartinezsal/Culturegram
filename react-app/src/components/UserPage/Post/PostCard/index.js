@@ -8,12 +8,24 @@ import PostOptions from '../../Modal/PostOptions';
 import ImageSlider from '../../../Tools/ImageSlider';
 import timeUpdatedAt from '../../../Tools/Utils';
 import CommentPost from './CommentPost';
+import PostModal from '../../Modal/PostModal';
 
-
-function PostCard({ post, user }) {
+function PostCard({ post }) {
   const sessionUser = useSelector(state => state.session.user);
+  const comments = useSelector(state => state.comment);
   const [optionModal, setOptionsModal] = useState(false);
+  const [postModal, setPostModal] = useState(false);
 
+  const user = post.user;
+
+  const commentsForPost = () => {
+    let commentsId = post.comments;
+    let commentsFiltered = [];
+    for (const id of commentsId) {
+      commentsFiltered.push(comments[id])
+    }
+    return commentsFiltered;
+  }
 
   return (
 
@@ -30,7 +42,7 @@ function PostCard({ post, user }) {
       </div>
       {optionModal && (
         <Modal onClose={() => setOptionsModal(false)}>
-          <PostOptions setOptionsModal={setOptionsModal} post={post} />
+          <PostOptions setOptionsModal={setOptionsModal} post={post} comments={commentsForPost() } />
         </Modal>
       )
       }
@@ -49,7 +61,13 @@ function PostCard({ post, user }) {
           <p className="bold">{user.username}</p> <p>{post.content}</p>
         </div>
         <div className="light post-card-content">
-          <p>{post.comments.length === 0 ? "No comments" : `View all ${post.comments.length} comments`} </p>
+          <p onClick={() => setPostModal(true)}>{post.comments.length === 0 ? "No comments" : `View all ${post.comments.length} comments`} </p>
+          {postModal &&
+            (
+              <Modal onClose={() => setPostModal(false)}>
+                <PostModal setPostModal={setPostModal} post={post} comments={commentsForPost()} />
+              </Modal>
+            )}
           <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>
         </div>
       </div>
