@@ -14,17 +14,164 @@
 #modal-background {
 	position: fixed;
 	height: 100%;
-	top: 0;
+	top: 20;
 	right: 0;
 	left: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.102);
+	background-color: rgba(0, 0, 0, 0.528);
 	backdrop-filter: blur(2px);
 }
 
 #modal-content {
 	position: absolute;
-	background-color: rgba(255, 255, 255, 0.791);
-		box-shadow: 2px 2px 10px 3px black;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.495);
+	border-radius: 20px;
+}
+
+/* Create post modal styles */
+.post-modal {
+	width: 600px;
+	max-height: fit-content;
+}
+
+.post-modal .modal-header {
+	display: flex;
+	border-bottom: var(--main-border);
+	font-weight: 600;
+	padding: 15px;
+}
+
+.post-modal .modal-header p:first-of-type {
+	margin-left: auto;
+}
+
+.post-modal .modal-header .modal-right-btn {
+	color: blue;
+	cursor: pointer;
+	margin-left: auto;
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.post-modal .modal-header .modal-left-btn{
+	font-size: 1.8rem;
+}
+
+.post-modal .upload-image-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+}
+
+.post-modal .upload-image-wrapper .react-icons {
+	font-size: 4.5rem;
+}
+
+.post-modal .image-uploader h3 {
+	font-weight: 300;
+	font-size: 1.3rem;
+}
+
+
+.post-modal .btn-wrapper {
+	display: flex;
+	margin: 10px 0px;
+}
+
+.post-modal .btn-wrapper button {
+	flex-grow: 1;
+	height: 50px;
+	padding: 5px;
+	margin: 10px;
+	border: none;
+	border-radius: 2px;
+}
+
+.post-modal .upload-image-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.post-modal .image-item img {
+	width: 75px;
+	height: 75px;
+	object-fit: cover;
+}
+
+.post-modal .image-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: var(--main-border);
+	padding: 5px;
+	margin: 5px;
+}
+
+.post-modal .image-item-btn-wrapper {
+	width: fit-content;
+	padding-top: 5px;
+}
+
+.post-modal .submit-header{
+	display: flex;
+	align-items: center;
+}
+.submit-modal {
+	display: flex;
+}
+
+.post-modal .slider {
+	position: relative;
+}
+
+.post-modal .slider img {
+	width: 300px;
+	height: 300px;
+	border-radius: 0 0 0px 20px;
+	object-fit: cover;
+}
+
+.submit-modal .form-modal{
+	width: 100%;
+	height: 100%;
+}
+.submit-modal .form-modal .top{
+	display: flex;
+	align-items: center;
+	padding-left: 20px;
+	margin: 10px 0px;
+}
+
+.submit-modal .form-modal .top p {
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.submit-modal .form-modal img {
+	height: 35px;
+	object-fit: contain;
+	border-radius: 50%;
+	margin-right: 20px;
+
+}
+
+.submit-modal form{
+	height: 100%;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.submit-modal form textarea{
+	width: 90% ;
+	height: 100px;
+	padding-left: 20px;
+	border: none;
+	resize: none;
+	outline: none;
+	background-color: transparent;
 
 }

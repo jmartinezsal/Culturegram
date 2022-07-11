@@ -19,8 +19,8 @@
   margin-right: 40px;
 }
 
-.navigation .active{
-  background-color: black;
+.navigation .active *{
+  color: orange;
 }
 
 /* Profile Button styles */
@@ -37,8 +37,9 @@
 
 .profile-btn img{
   height: 25px;
-  padding: 2px;
-  border: 1px black double;
+  padding: 1px;
+  border: 1px black solid;
+  object-fit: contain;
   border-radius: 50%;;
 }
 

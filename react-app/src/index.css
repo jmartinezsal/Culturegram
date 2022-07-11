@@ -2,11 +2,13 @@
 @import url('./css/SplashPage.css');
 @import url('./css/Navigation.css');
 @import url('./css/Modal.css');
+@import url('./css/Tools.css');
 
 
 :root {
   --main-border: 1px solid #bfbfbf;
-  --btn-opacity: opacity .3s ease-in-out;
+  --btn-opacity-transition: opacity 1s ease-in-out;
+  --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 #root,
@@ -16,7 +18,7 @@ html {
   margin: 0px;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
-  font-family: Segoe UI ,Roboto,Helvetica,Arial,sans-serif;
+  font-family: var(--font-family-system);
 }
 
 
@@ -36,4 +38,13 @@ p {
 
 .bold{
   font-weight: bold;
+}
+
+button, .btn{
+  cursor: pointer;
+  transition: var(--btn-opacity-transiton);
+}
+
+button:hover, .btn:hover{
+  opacity: .7
 }
