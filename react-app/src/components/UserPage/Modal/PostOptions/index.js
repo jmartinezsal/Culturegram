@@ -15,7 +15,7 @@ function PostOptions({ post, setOptionsModal }) {
       </div>
       {deleteModal &&
         <Modal onClose={() => setDeleteModal(false)}>
-          <DeletePostModal setDeleteModal={setDeleteModal} postId={post.id} />
+          <DeletePostModal setDeleteModal={setDeleteModal} setOptionsModal={setOptionsModal} postId={post.id} />
         </Modal>
       }
       <div className="options">
