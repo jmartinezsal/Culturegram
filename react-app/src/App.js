@@ -35,7 +35,7 @@ function App() {
         <Navigation />
         }
       <Switch>
-        <Route path='/' >
+        <Route path='/' exact={true}>
           <UserViewPage sessionUser={user}/>
         </Route>
         <Route path='/sign-up' exact={true}>
