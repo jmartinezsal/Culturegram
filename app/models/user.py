@@ -55,3 +55,10 @@ class User(db.Model, UserMixin):
             "likes": [like.id for like in self.likes],
             "comments": [comment.id for comment in self.comments],
         }
+
+    def to_dict_simple(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'profilePicture': self.profile_picture,
+        }

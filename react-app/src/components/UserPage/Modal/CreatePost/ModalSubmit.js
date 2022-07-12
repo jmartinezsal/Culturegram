@@ -66,7 +66,7 @@ function ModalSubmit({ images, Previous, setCreateModal }) {
         <ImageSlider images={images} type="post" />
         <form className="form-modal" onSubmit={submitHandler}>
                     <div className='top'>
-            <img src={user.profilePicture} alt="profile"></img>
+            <img className="profile-picture" src={user.profilePicture} alt="profile"></img>
             <p>{user.username}</p>
           </div>
           <textarea

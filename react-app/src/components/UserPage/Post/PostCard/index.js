@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { FaRegCommentDots, FaRegHeart } from 'react-icons/fa';
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
@@ -8,12 +8,32 @@ import PostOptions from '../../Modal/PostOptions';
 import ImageSlider from '../../../Tools/ImageSlider';
 import timeUpdatedAt from '../../../Tools/Utils';
 import CommentPost from './CommentPost';
+import PostModal from '../../Modal/PostModal';
 
-
-function PostCard({ post, user }) {
+function PostCard({ post }) {
   const sessionUser = useSelector(state => state.session.user);
+  const comments = useSelector(state => state.comment);
   const [optionModal, setOptionsModal] = useState(false);
+  const [postModal, setPostModal] = useState(false);
 
+
+  useEffect(()=>{
+    let modalDiv= document.body.getElementsByClassName("comment-container")[0]
+    document.body.style.overflowY = postModal ? "hidden" : "scroll";
+    if(modalDiv){
+      modalDiv.style.overflowY = postModal ? "scroll" : "hidden";
+    }
+  }, [postModal])
+  const user = post.user;
+
+  const commentsForPost = () => {
+    let commentsId = post.comments;
+    let commentsFiltered = [];
+    for (const id of commentsId) {
+      commentsFiltered.push(comments[id])
+    }
+    return commentsFiltered;
+  }
 
   return (
 
@@ -40,7 +60,7 @@ function PostCard({ post, user }) {
       <div className="post-card-bottom">
         <div className="post-card-btns post-card-content">
           <FaRegHeart />
-          <FaRegCommentDots />
+          <FaRegCommentDots onClick={() => setPostModal(true)} />
         </div>
         <div className="post-card-liked post-card-content">
           "How many people liked this"
@@ -49,7 +69,13 @@ function PostCard({ post, user }) {
           <p className="bold">{user.username}</p> <p>{post.content}</p>
         </div>
         <div className="light post-card-content">
-          <p>{post.comments.length === 0 ? "No comments" : `View all ${post.comments.length} comments`} </p>
+          <p onClick={() => setPostModal(true)}>{post.comments.length === 0 ? "No comments" : `View all ${post.comments.length} comments`} </p>
+          {postModal &&
+            (
+              <Modal onClose={() => setPostModal(false)}>
+                <PostModal setPostModal={setPostModal} setOptionsModal={setOptionsModal} post={post} comments={commentsForPost()} />
+              </Modal>
+            )}
           <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>
         </div>
       </div>

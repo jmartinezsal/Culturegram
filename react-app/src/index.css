@@ -49,3 +49,10 @@ button, .btn{
 button:hover, .btn:hover{
   opacity: .7
 }
+
+.profile-picture{
+	height: 35px;
+	object-fit: contain;
+	border-radius: 50%;
+	margin-right: 10px;
+}

@@ -5,12 +5,12 @@ import ImageSlider from "../../../Tools/ImageSlider"
 import { updatePost } from "../../../../store/post";
 import { useHistory } from "react-router-dom";
 
-function EditPostModal({post, setEditModal, setOptionsModal }) {
+function EditPostModal({ post, setEditModal, setOptionsModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
   const images = post.images;
-  const id  = post.id;
+  const id = post.id;
 
   const [content, setContent] = useState(post.content);
   const [hashtags, setHashtags] = useState([]);
@@ -44,15 +44,15 @@ function EditPostModal({post, setEditModal, setOptionsModal }) {
   return (
     <div className="post-modal">
       <div className="modal-header submit-header">
-        <p onClick={()=> setEditModal(false)}>Cancel</p>
+        <p onClick={() => setEditModal(false)}>Cancel</p>
         <p>Edit info</p>
         <p className="modal-right-btn submit btn" onClick={submitHandler}>Done</p>
       </div>
       <div className="submit-modal">
-        <ImageSlider images={images}  />
+        <ImageSlider images={images} />
         <form className="form-modal" onSubmit={submitHandler}>
-                    <div className='top'>
-            <img src={user.profilePicture} alt="profile"></img>
+          <div className='top'>
+            <img className="profile-picture" src={user.profilePicture} alt="profile"></img>
             <p>{user.username}</p>
           </div>
           <textarea

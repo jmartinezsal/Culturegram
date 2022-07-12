@@ -14,20 +14,20 @@ function CommentPost({postId}){
   useEffect(() =>{
     if(comment.length > 0 && comment.length <= 255){
       setDisabled(false)
-      setLength(comment.length)
     } else{
       setDisabled(true)
     }
-  },[comment])
+    setLength(comment.length)
+  },[comment.length])
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
     const payload = {
       postId,
       comment
     }
-     dispatch(createComment(payload))
-    dispatch(loadPosts())
+     await dispatch(createComment(payload))
+    await dispatch(loadPosts())
     setComment('')
     setLength(0)
   }
