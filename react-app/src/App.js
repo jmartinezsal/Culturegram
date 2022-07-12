@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import { authenticate } from './store/session';
 import UserViewPage from './components/UserViewPage';
+import Navigation from './components/UserPage/Navigation';
+
+import { authenticate } from './store/session';
 import { loadPosts } from './store/post';
 import { loadComments } from './store/comment';
-import Navigation from './components/UserPage/Navigation';
+import { loadLikes } from './store/like';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ function App() {
       await dispatch(authenticate());
       await dispatch(loadPosts());
       await dispatch(loadComments())
+      await dispatch(loadLikes())
       setLoaded(true);
     })();
   }, [dispatch]);

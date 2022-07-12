@@ -9,7 +9,6 @@ function CommentOptions({ setOptionsModal, commentId}) {
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
 
-  console.log(comment)
   return (
     <div className="post-options-modal" >
       <div className="options">
