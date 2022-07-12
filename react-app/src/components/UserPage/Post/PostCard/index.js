@@ -9,10 +9,12 @@ import ImageSlider from '../../../Tools/ImageSlider';
 import timeUpdatedAt from '../../../Tools/Utils';
 import CommentPost from './CommentPost';
 import PostModal from '../../Modal/PostModal';
+import Like from '../../../Tools/Like';
 
 function PostCard({ post }) {
   const sessionUser = useSelector(state => state.session.user);
   const comments = useSelector(state => state.comment);
+  const likes = useSelector(state => state.like);
   const [optionModal, setOptionsModal] = useState(false);
   const [postModal, setPostModal] = useState(false);
 
@@ -25,6 +27,17 @@ function PostCard({ post }) {
     }
   }, [postModal])
   const user = post.user;
+
+  const likedChecker = () => {
+    let likeIds = post.likes;
+    for (const id of likeIds) {
+      let userId =  likes[id]?.userId;
+      if(userId ===sessionUser.id) return {[id]: true}
+    }
+    return false;
+  }
+  const [liked, setLiked] = useState(likedChecker())
+
 
   const commentsForPost = () => {
     let commentsId = post.comments;
@@ -59,7 +72,7 @@ function PostCard({ post }) {
       </div>
       <div className="post-card-bottom">
         <div className="post-card-btns post-card-content">
-          <FaRegHeart />
+          <Like postId={post?.id} liked={liked} setLiked={setLiked} sessionUserId={sessionUser.id}/>
           <FaRegCommentDots onClick={() => setPostModal(true)} />
         </div>
         <div className="post-card-liked post-card-content">

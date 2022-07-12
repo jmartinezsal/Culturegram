@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { useSelector } from 'react-redux';
-import { FaRegHeart, FaRegCommentDots } from "react-icons/fa";
+import {FaRegCommentDots } from "react-icons/fa";
 import {BiDotsHorizontalRounded} from 'react-icons/bi';
 
 import ImageSlider from "../../../Tools/ImageSlider";
@@ -9,6 +9,7 @@ import CommentPost from "../../Post/PostCard/CommentPost";
 import CommentSection from "./CommentSection";
 import PostOptions from '../../Modal/PostOptions';
 import { Modal } from '../../../../context/Modal';
+import Like from '../../../Tools/Like';
 
 
 
@@ -46,7 +47,7 @@ function PostModal({ post, comments }) {
       </div>
       <div className="post-modal-right-bottom">
         <div className="post-card-btns post-card-content">
-          <FaRegHeart />
+          <Like postId={post.id} />
           <FaRegCommentDots />
         </div>
         <p>"Number of people liked this post"</p>
