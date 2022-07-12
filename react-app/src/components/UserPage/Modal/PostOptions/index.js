@@ -1,4 +1,4 @@
-import { useDebugValue, useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "../../../../context/Modal";
 import DeletePostModal from "./DeletePostModal";
 import EditPostModal from './EditPostModal';

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { FaRegCommentDots, FaRegHeart } from 'react-icons/fa';
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
@@ -16,6 +16,14 @@ function PostCard({ post }) {
   const [optionModal, setOptionsModal] = useState(false);
   const [postModal, setPostModal] = useState(false);
 
+
+  useEffect(()=>{
+    let modalDiv= document.body.getElementsByClassName("comment-container")[0]
+    document.body.style.overflowY = postModal ? "hidden" : "scroll";
+    if(modalDiv){
+      modalDiv.style.overflowY = postModal ? "scroll" : "hidden";
+    }
+  }, [postModal])
   const user = post.user;
 
   const commentsForPost = () => {
@@ -42,7 +50,7 @@ function PostCard({ post }) {
       </div>
       {optionModal && (
         <Modal onClose={() => setOptionsModal(false)}>
-          <PostOptions setOptionsModal={setOptionsModal} post={post} comments={commentsForPost() } />
+          <PostOptions setOptionsModal={setOptionsModal} post={post} />
         </Modal>
       )
       }
@@ -52,7 +60,7 @@ function PostCard({ post }) {
       <div className="post-card-bottom">
         <div className="post-card-btns post-card-content">
           <FaRegHeart />
-          <FaRegCommentDots />
+          <FaRegCommentDots onClick={() => setPostModal(true)} />
         </div>
         <div className="post-card-liked post-card-content">
           "How many people liked this"
@@ -65,7 +73,7 @@ function PostCard({ post }) {
           {postModal &&
             (
               <Modal onClose={() => setPostModal(false)}>
-                <PostModal setPostModal={setPostModal} post={post} comments={commentsForPost()} />
+                <PostModal setPostModal={setPostModal} setOptionsModal={setOptionsModal} post={post} comments={commentsForPost()} />
               </Modal>
             )}
           <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>

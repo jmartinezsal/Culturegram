@@ -33,6 +33,7 @@
 .post-modal {
 	width: 600px;
 	max-height: fit-content;
+
 }
 
 .post-modal .modal-header {
@@ -54,7 +55,7 @@
 	font-size: 16px;
 }
 
-.post-modal .modal-header .modal-left-btn{
+.post-modal .modal-header .modal-left-btn {
 	font-size: 1.8rem;
 }
 
@@ -116,10 +117,11 @@
 	padding-top: 5px;
 }
 
-.post-modal .submit-header{
+.post-modal .submit-header {
 	display: flex;
 	align-items: center;
 }
+
 .submit-modal {
 	display: flex;
 }
@@ -131,15 +133,17 @@
 .post-modal .slider img {
 	width: 300px;
 	height: 300px;
+	box-sizing: border-box;
 	border-radius: 0 0 0px 20px;
 	object-fit: cover;
 }
 
-.submit-modal .form-modal{
+.submit-modal .form-modal {
 	width: 100%;
 	height: 100%;
 }
-.submit-modal .form-modal .top{
+
+.submit-modal .form-modal .top {
 	display: flex;
 	align-items: center;
 	padding-left: 20px;
@@ -152,14 +156,14 @@
 }
 
 
-.submit-modal form{
+.submit-modal form {
 	height: 100%;
 	box-sizing: border-box;
 	width: 100%;
 }
 
-.submit-modal form textarea{
-	width: 90% ;
+.submit-modal form textarea {
+	width: 90%;
 	height: 100px;
 	padding-left: 20px;
 	border: none;
@@ -171,7 +175,7 @@
 
 
 /* Options Modal styles */
-.post-options-modal{
+.post-options-modal {
 	width: 400px;
 	height: 200px;
 	display: flex;
@@ -179,35 +183,37 @@
 	justify-content: space-evenly;
 	align-items: center;
 }
-.options{
+
+.options {
 	width: 100%;
 	height: 100%;
 	cursor: pointer;
 	transition: all .3s ease-in-out;
 }
 
- .options p{
+.options p {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100%;
 }
-.options:not(:last-child){
+
+.options:not(:last-child) {
 	border-bottom: var(--main-border);
 }
 
-.option-delete{
+.option-delete {
 	color: red;
 }
 
- .options:hover{
+.options:hover {
 	background-color: #bfbfbf17;
 }
 
 
 /* Options Modal styles */
-.delete-modal{
+.delete-modal {
 	width: 400px;
 	height: 200px;
 	display: flex;
@@ -216,7 +222,7 @@
 
 }
 
-.delete-modal .delete-header{
+.delete-modal .delete-header {
 	text-align: center;
 	width: 100%;
 	height: 60%;
@@ -224,12 +230,113 @@
 }
 
 
-.delete-modal .delete-header .bold{
-margin: 30px 0px 10px 0px;
+.delete-modal .delete-header .bold {
+	margin: 30px 0px 10px 0px;
 }
 
 
-.delete-options{
-	width:100%;
+.delete-options {
+	width: 100%;
 	height: auto;
+}
+
+
+/* Post Modal styles */
+.post-modal-view {
+	width: 700px;
+	height: 500px;
+	display: flex;
+}
+
+.post-modal-view .slider {
+	position: relative;
+}
+
+
+.post-modal-view .slider img {
+	width: 350px;
+	height: 500px;
+	box-sizing: border-box;
+	object-fit: cover;
+	border-right: var(--main-border);
+}
+
+.post-modal-view .post-modal-right {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 500px;
+}
+
+.post-modal-view .post-modal-right .top {
+	display: flex;
+	align-items: center;
+	border-bottom: var(--main-border);
+	box-sizing: border-box;
+	width: 100%;
+	padding: 5px 0px 5px 20px;
+}
+
+.post-modal-view .post-modal-right .top .react-icons{
+	margin-left: auto;
+	margin-right: 20px;
+	font-size: 1.3rem;
+}
+
+.post-modal-right .comment-container {
+	width: 350px;
+	height: fit-content;
+	overflow-y: scroll;
+	box-sizing: border-box;
+	padding: 0px 20px;
+	border-bottom: var(--main-border);
+}
+
+.post-modal-view .post-modal-right .comment {
+	height: fit-content;
+}
+
+.comment-container::-webkit-scrollbar {
+	display: none;
+}
+
+.post-modal-view .post-modal-right .comment-top {
+	display: flex;
+	align-items: flex-start;
+	padding: 20px 0px;
+}
+
+.post-modal-view .post-modal-right .bold {
+	font-size: 14px;
+	margin-right: 5px;
+}
+.post-modal-view .post-modal-right .comment-top .contained{
+	max-width: 50%;
+	word-wrap: break-word;
+
+}
+
+.post-modal-view .post-modal-right .comment-top .react-icons {
+	margin-left: auto;
+}
+
+.post-modal-view .post-modal-right-bottom{
+	padding-left: 20px;
+}
+
+.post-modal-view .created-at{
+	margin: 0px 5px;
+	color: #a9a8a8;
+	font-size: 8px;
+}
+.post-modal-right-bottom .created-at{
+	margin: 10px 0px 20px 0px;
+}
+
+
+.post-modal-view .comment-form input{
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	background-color: white;
 }

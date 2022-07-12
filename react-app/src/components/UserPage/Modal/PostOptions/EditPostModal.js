@@ -52,7 +52,7 @@ function EditPostModal({ post, setEditModal, setOptionsModal }) {
         <ImageSlider images={images} />
         <form className="form-modal" onSubmit={submitHandler}>
           <div className='top'>
-            <img className="profile-pciture" src={user.profilePicture} alt="profile"></img>
+            <img className="profile-picture" src={user.profilePicture} alt="profile"></img>
             <p>{user.username}</p>
           </div>
           <textarea
