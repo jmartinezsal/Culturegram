@@ -13,7 +13,7 @@ import Like from '../../../Tools/Like';
 
 
 
-function PostModal({ post, comments }) {
+function PostModal({ post, comments , liked, setLiked}) {
   const sessionUser = useSelector(state => state.session.user);
   const [optionModal, setOptionsModal] = useState(false);
 
@@ -47,7 +47,7 @@ function PostModal({ post, comments }) {
       </div>
       <div className="post-modal-right-bottom">
         <div className="post-card-btns post-card-content">
-          <Like postId={post.id} />
+        <Like postId={post?.id} liked={liked} setLiked={setLiked} sessionUserId={sessionUser.id}/>
           <FaRegCommentDots />
         </div>
         <p>"Number of people liked this post"</p>

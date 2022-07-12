@@ -76,7 +76,7 @@ function PostCard({ post }) {
           <FaRegCommentDots onClick={() => setPostModal(true)} />
         </div>
         <div className="post-card-liked post-card-content">
-          "How many people liked this"
+          <p>{post.likes.length === 0 ? "No Likes at the moment" : `Liked by ${post.likes.length}`}</p>
         </div>
         <div className="post-card-header post-card-content">
           <p className="bold">{user.username}</p> <p>{post.content}</p>
@@ -86,7 +86,7 @@ function PostCard({ post }) {
           {postModal &&
             (
               <Modal onClose={() => setPostModal(false)}>
-                <PostModal setPostModal={setPostModal} setOptionsModal={setOptionsModal} post={post} comments={commentsForPost()} />
+                <PostModal setPostModal={setPostModal} setOptionsModal={setOptionsModal} post={post} comments={commentsForPost()} liked={liked} setLiked={setLiked}/>
               </Modal>
             )}
           <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>
