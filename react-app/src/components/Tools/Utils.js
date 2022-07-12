@@ -12,7 +12,7 @@ export default function timeUpdatedAt(updatedAt){
   }
   if(Number.isInteger(diffDays) && diffDays !== 0){
     return`${diffDays} days ago`;
-  } else if(Number.isInteger(diffHrs) ){
+  } else if(Number.isInteger(diffHrs) && diffHrs !== 0){
     return  `${diffHrs}  hours ago`;
   }else if(Number.isInteger(diffMins)){
     return `${diffMins} minutes ago`;

@@ -69,7 +69,7 @@ export const createComment = (payload) => async dispatch => {
 }
 
 export const updateComment = (payload) => async dispatch => {
-  const res = await fetch(`/api/comments/edit/${payload.postId}`,
+  const res = await fetch(`/api/comments/edit/${payload.id}`,
     {
       method: "PUT",
       headers: {

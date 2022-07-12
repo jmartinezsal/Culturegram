@@ -285,7 +285,7 @@
 
 .post-modal-right .comment-container {
 	width: 350px;
-	height: fit-content;
+	height: 400px;
 	overflow-y: scroll;
 	box-sizing: border-box;
 	padding: 0px 20px;

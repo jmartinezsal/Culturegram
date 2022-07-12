@@ -20,14 +20,14 @@ function CommentPost({postId}){
     setLength(comment.length)
   },[comment.length])
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
     const payload = {
       postId,
       comment
     }
-     dispatch(createComment(payload))
-    dispatch(loadPosts())
+     await dispatch(createComment(payload))
+    await dispatch(loadPosts())
     setComment('')
     setLength(0)
   }
