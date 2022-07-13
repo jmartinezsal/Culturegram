@@ -2,11 +2,11 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-user_following = db.Table(
-    'user_following', db.Model.metadata,
-    db.Column("follower", db.ForeignKey('users.id'), primary_key=True, nullable=False ),
-    db.Column("following", db.ForeignKey('users.id'), primary_key=True, nullable=False )
-)
+# user_following = db.Table(
+#     'user_following',
+#     db.Column("follower", db.ForeignKey('users.id'), primary_key=True, nullable=False ),
+#     db.Column("following", db.ForeignKey('users.id'), primary_key=True, nullable=False )
+# )
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -25,11 +25,12 @@ class User(db.Model, UserMixin):
     posts = db.relationship("Post", back_populates="user", cascade="all, delete-orphan")
     comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
     likes = db.relationship("Like", back_populates="user", cascade="all, delete-orphan")
-    followings = db.relationship("User", secondary=user_following,
-                    primaryjoin= id == user_following.c.follower,
-                    secondaryjoin= id ==user_following.c.following,
-                    backref="followers",  cascade="all, delete"
-                    )
+    user_followings = db.relationship("User_Following", foreign_keys="User_Following.following_id",
+                        back_populates="user", lazy="dynamic")
+    user_followers = db.relationship("User_Following", foreign_keys="User_Following.follower_id",
+                        back_populates="followie", lazy="dynamic")
+
+
     @property
     def password(self):
         return self.hashed_password
@@ -54,6 +55,7 @@ class User(db.Model, UserMixin):
             "posts": [post.id for post in self.posts],
             "likes": [like.id for like in self.likes],
             "comments": [comment.id for comment in self.comments],
+            "following": [following.to_dict() for following in self.user_followings]
         }
 
     def to_dict_simple(self):
