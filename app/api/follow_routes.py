@@ -19,34 +19,41 @@ def follow():
 
   form['csrf_token'].data = request.cookies['csrf_token']
 
-  new_follow = User_Following(
-    follower_id = current_user.to_dict()['id'],
-    following_id = data["following_id"],
-    blocked = data["blocked"]
-  )
-  db.session.add(new_follow)
-  db.seesion.commit()
-  return {"success": "You are now following this person"}
+  if form.validate_on_submit():
+    new_follow = User_Following(
+      follower_id = current_user.to_dict()['id'],
+      following_id = data['following_id'],
+      blocked = data['blocked']
+    )
+
+    db.session.add(new_follow)
+    db.session.commit()
+    return {"success": "You are now following this person"}
+
 
 @follow_routes.route('<int:user_following_id>', methods=["PUT"])
 @login_required
 def updateFollow(user_following_id):
-  following = User_Following.query.get(user_following_id)
+  following = User_Following.query.filter(User_Following.id==user_following_id).first()
+
+  print(following.to_dict())
 
   form = FollowingForm()
   data = form.data
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-    following.locked = data["blocked"]
-    db.seesion.commit()
-    return {"success": "You are now following this person"}
+    following.blocked = data["blocked"]
+
+    db.session.commit()
+    return {"success": "This person has been blocked"}
 
 
-@follow_routes.route('<int:following_id>', methods=["DELETE"])
+@follow_routes.route('<int:user_following_id>', methods=["DELETE"])
 @login_required
-def unfollow(following_id):
+def unfollow(user_following_id):
+  following = User_Following.query.filter(User_Following.id==user_following_id).first()
 
-  db.session.delete(unfollow)
-  db.seesion.commit()
+  db.session.delete(following)
+  db.session.commit()
   return {"success": "You are now unfollowing this person"}

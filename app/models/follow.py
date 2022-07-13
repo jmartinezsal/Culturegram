@@ -13,6 +13,7 @@ class User_Following(db.Model):
 
   user = db.relationship("User", foreign_keys=[follower_id], back_populates="user_followings")
   followie = db.relationship("User", foreign_keys=[following_id], back_populates="user_followers")
+  
   def to_dict(self):
     return {
       "id": self.id,
