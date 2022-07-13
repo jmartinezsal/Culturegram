@@ -50,7 +50,7 @@ function PostModal({ post, comments , liked, setLiked}) {
         <Like postId={post?.id} liked={liked} setLiked={setLiked} sessionUserId={sessionUser.id}/>
           <FaRegCommentDots />
         </div>
-        <p>"Number of people liked this post"</p>
+        <p>{post.likes.length === 0 ? "No Likes at the moment" : `Liked by ${post.likes.length}`}</p>
         <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>
       </div>
       <CommentPost postId={post.id} />

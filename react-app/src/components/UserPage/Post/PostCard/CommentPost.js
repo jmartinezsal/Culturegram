@@ -26,7 +26,7 @@ function CommentPost({postId}){
       postId,
       comment
     }
-     await dispatch(createComment(payload))
+    await dispatch(createComment(payload))
     await dispatch(loadPosts())
     setComment('')
     setLength(0)

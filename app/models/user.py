@@ -55,7 +55,9 @@ class User(db.Model, UserMixin):
             "posts": [post.id for post in self.posts],
             "likes": [like.id for like in self.likes],
             "comments": [comment.id for comment in self.comments],
-            "following": [following.to_dict() for following in self.user_followings]
+            "follower": [following.to_dict() for following in self.user_followings],
+            "following": {follower.id: follower.to_dict() for follower in self.user_followers}
+
         }
 
     def to_dict_simple(self):
