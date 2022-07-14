@@ -130,6 +130,7 @@
 .sign-up-auth {
   width: 800px;
   max-width: fit-content;
+  height: 400px;
   display: flex;
   align-items: center;
   background-color: white;
