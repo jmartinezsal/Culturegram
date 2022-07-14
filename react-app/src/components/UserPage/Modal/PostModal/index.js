@@ -4,7 +4,7 @@ import {FaRegCommentDots } from "react-icons/fa";
 import {BiDotsHorizontalRounded} from 'react-icons/bi';
 
 import ImageSlider from "../../../Tools/ImageSlider";
-import timeUpdatedAt from "../../../Tools/Utils";
+import {timeUpdatedAt}  from '../../../Tools/Utils';
 import CommentPost from "../../Post/PostCard/CommentPost";
 import CommentSection from "./CommentSection";
 import PostOptions from '../../Modal/PostOptions';

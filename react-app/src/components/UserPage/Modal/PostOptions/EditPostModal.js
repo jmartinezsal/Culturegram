@@ -34,7 +34,6 @@ function EditPostModal({ post, setEditModal, setOptionsModal }) {
     let post = await dispatch(updatePost(data))
     const post_id = post.id;
     if (Number.isInteger(post_id)) {
-      history.push('/')
       setEditModal(false);
       setOptionsModal(false);
     }

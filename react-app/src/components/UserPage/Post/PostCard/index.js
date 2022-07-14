@@ -6,7 +6,7 @@ import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import { Modal } from '../../../../context/Modal';
 import PostOptions from '../../Modal/PostOptions';
 import ImageSlider from '../../../Tools/ImageSlider';
-import timeUpdatedAt from '../../../Tools/Utils';
+import {timeUpdatedAt, likedChecker, commentsForPost}  from '../../../Tools/Utils';
 import CommentPost from './CommentPost';
 import PostModal from '../../Modal/PostModal';
 import Like from '../../../Tools/Like';
@@ -28,25 +28,11 @@ function PostCard({ post }) {
   }, [postModal])
   const user = post.user;
 
-  const likedChecker = () => {
-    let likeIds = post.likes;
-    for (const id of likeIds) {
-      let userId =  likes[id]?.userId;
-      if(userId ===sessionUser.id) return {[id]: true}
-    }
-    return false;
-  }
-  const [liked, setLiked] = useState(likedChecker())
+
+  const [liked, setLiked] = useState(likedChecker(post, likes, sessionUser))
 
 
-  const commentsForPost = () => {
-    let commentsId = post.comments;
-    let commentsFiltered = [];
-    for (const id of commentsId) {
-      commentsFiltered.push(comments[id])
-    }
-    return commentsFiltered;
-  }
+
 
   return (
 
@@ -86,7 +72,8 @@ function PostCard({ post }) {
           {postModal &&
             (
               <Modal onClose={() => setPostModal(false)}>
-                <PostModal setPostModal={setPostModal} setOptionsModal={setOptionsModal} post={post} comments={commentsForPost()} liked={liked} setLiked={setLiked}/>
+                <PostModal setPostModal={setPostModal} setOptionsModal={setOptionsModal}
+                post={post} comments={commentsForPost(post,comments)} liked={liked} setLiked={setLiked}/>
               </Modal>
             )}
           <p className="created-at">{timeUpdatedAt(post.updatedAt)}</p>
