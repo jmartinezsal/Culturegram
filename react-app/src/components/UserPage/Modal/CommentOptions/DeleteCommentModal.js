@@ -8,8 +8,8 @@ function DeleteCommentModal({ setDeleteModal, commentId, setOptionsModal }) {
 
   const deleteHandler = async(e) => {
     await dispatch(removeComment(commentId))
-    await dispatch(loadPosts())
     setOptionsModal(false)
+    await dispatch(loadPosts())
   }
 
   return (

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
 import User from './components/User';
 import UserViewPage from './components/UserViewPage';
 import Navigation from './components/UserPage/Navigation';
@@ -13,6 +12,7 @@ import { authenticate } from './store/session';
 import { loadPosts } from './store/post';
 import { loadComments } from './store/comment';
 import { loadLikes } from './store/like';
+import PostView from './components/UserPage/Post/PostView';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,8 +45,8 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path='/posts/:postId' exact={true} >
+          <PostView />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />

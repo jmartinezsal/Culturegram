@@ -1,4 +1,4 @@
-export default function timeUpdatedAt(updatedAt){
+export function timeUpdatedAt(updatedAt){
   const today = new Date();
   const updated = new Date(updatedAt)
   const offset = today.getTimezoneOffset()
@@ -17,4 +17,22 @@ export default function timeUpdatedAt(updatedAt){
   }else if(Number.isInteger(diffMins)){
     return `${diffMins} minutes ago`;
   }
+}
+
+export const likedChecker = (post, sessionUser, likes) => {
+  let likeIds = post.likes;
+  for (const id of likeIds) {
+    let userId =  likes[id]?.userId;
+    if(userId ===sessionUser.id) return {[id]: true}
+  }
+  return false;
+}
+
+export const commentsForPost = (post, comments) => {
+  let commentsId = post.comments;
+  let commentsFiltered = [];
+  for (const id of commentsId) {
+    commentsFiltered.push(comments[id])
+  }
+  return commentsFiltered;
 }

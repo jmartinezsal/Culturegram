@@ -87,13 +87,16 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'])
     )
 
-    op.create_table('user_following',
+    op.create_table('user_followings',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('following', sa.Integer(), nullable=False),
-    sa.Column('follower', sa.Integer(), nullable=False),
+    sa.Column('following_id', sa.Integer(), nullable=False),
+    sa.Column('follower_id', sa.Integer(), nullable=False),
+    sa.Column('blocked', sa.Boolean, nullable=False, default=False ),
+    sa.Column('created_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp()),
+    sa.Column('updated_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp(), onupdate=sa.func.current_timestamp()),
     sa.PrimaryKeyConstraint('id'),
-    sa.ForeignKeyConstraint(['following'], ['users.id']),
-    sa.ForeignKeyConstraint(['follower'], ['users.id'])
+    sa.ForeignKeyConstraint(['following_id'], ['users.id']),
+    sa.ForeignKeyConstraint(['follower_id'], ['users.id'])
     )
 
 
@@ -105,7 +108,7 @@ def downgrade():
     op.drop_table('comments')
     op.drop_table('images')
     op.drop_table('post_hashtags_join')
-    op.drop_table('user_following')
+    op.drop_table('user_followings')
     op.drop_table('hashtags')
     op.drop_table('likes')
     op.drop_table('posts')

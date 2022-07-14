@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
-import timeUpdatedAt from "../../../Tools/Utils";
+import {timeUpdatedAt}  from '../../../Tools/Utils';
 import CommentOptions from "../CommentOptions";
 import { Modal } from '../../../../context/Modal';
 function CommentSection({ comments }) {
@@ -13,7 +13,7 @@ function CommentSection({ comments }) {
 
   return (
     <>
-      {comments.map((comment, idx) => {
+      {comments?.map((comment, idx) => {
         let commentUser = comment?.user;
         return (
           <div className="comment" key={idx}>
