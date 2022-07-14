@@ -74,7 +74,7 @@ const SignUpForm = () => {
         <form className="sign-up-auth" onSubmit={onSignUp}>
           <div className="left-auth-signup">
             <img className='auth-logo' src={authlogo} alt="authlogo" />
-            <p>Log in to and display your culture and the all other culture's across the world.</p>
+            <p>Sign up, display your culture and see all other culture's across the world.</p>
             <div className='auth-errors'>
               {errors.map((error, ind) => (
                 <div key={ind}>{error.includes(':') ? error.split(':')[1] : error}</div>

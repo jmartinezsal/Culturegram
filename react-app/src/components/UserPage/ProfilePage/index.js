@@ -17,21 +17,20 @@ function ProfilePage({ loaded }) {
 
     (async () => {
       const response = await fetch(`/api/users/${username}`);
-      const user = await response.json();
+      const user = await response.json()
       setUser(user)
-
       setFollow(iFollow(sessionUser, user, allFollowing))
     })();
   }, [username]);
 
+  console.log(user)
   const postIds = user?.posts
   const myPosts = postIds?.map(postId => posts[postId])
 
-  if (!Object.values(user).length && loaded) {
+  if (user["Unsuccess"] && loaded) {
     return <PageNotFound />;
   }
 
-  console.log(user)
   return (
     <div className="profile-page">
       <div className="profile">
@@ -45,15 +44,15 @@ function ProfilePage({ loaded }) {
             } */}
             <div className="profile-info">
               <div className='info-section'>
-                <p className="length">{user.posts?.length}</p>
+                <p className="length">{user?.posts?.length}</p>
                 <p className="info-name">posts</p>
               </div>
               <div className='info-section'>
-                <p className="length">{user.follower?.length} </p>
+                <p className="length">{user?.follower?.length} </p>
                 <p className="info-name">followers</p>
               </div>
               <div className='info-section'>
-                <p className="length">{user.following?.length} </p>
+                <p className="length">{user?.following?.length} </p>
                 <p className="info-name">following</p>
               </div>
             </div>

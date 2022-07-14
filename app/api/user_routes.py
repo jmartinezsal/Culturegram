@@ -16,4 +16,6 @@ def users():
 @login_required
 def user(username):
     user = User.query.filter(User.username==username).first()
+    if not user:
+        return {"Unsuccess": True}
     return user.to_dict()
