@@ -10,6 +10,7 @@ import {timeUpdatedAt, likedChecker, commentsForPost}  from '../../../Tools/Util
 import CommentPost from './CommentPost';
 import PostModal from '../../Modal/PostModal';
 import Like from '../../../Tools/Like';
+import { Link } from 'react-router-dom';
 
 function PostCard({ post }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -38,10 +39,11 @@ function PostCard({ post }) {
 
     <div className="post-card" key={post.id}>
       <div className="post-card-top">
-        <div className='left-top'>
+        <Link to={`/${user.username}`} className='left-top'>
+
           <img src={user.profilePicture} alt={user.username} />
           <p className="bold">{user.username}</p>
-        </div>
+        </Link>
         {
           user.id === sessionUser.id &&
           <BiDotsHorizontalRounded onClick={() => setOptionsModal(true)} />

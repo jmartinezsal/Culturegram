@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FaRegCommentDots } from "react-icons/fa";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
 
 import ImageSlider from "../../Tools/ImageSlider";
-import {timeUpdatedAt, likedChecker, commentsForPost} from "../../Tools/Utils";
+import { timeUpdatedAt, likedChecker, commentsForPost } from "../../Tools/Utils";
 import CommentPost from "../Post/PostCard/CommentPost";
 import CommentSection from "../Modal/PostModal/CommentSection"
 import PostOptions from '../Modal/PostOptions';
@@ -28,8 +28,10 @@ function PostView() {
         <ImageSlider images={post?.images} />
         <div className="post-modal-right">
           <div className="top">
-            <img className="profile-picture" src={user?.profilePicture} alt={user?.username}></img>
-            <p className="bold">{user?.username}</p>
+            <Link to={`/${user.username}`}>
+              <img className="profile-picture" src={user?.profilePicture} alt={user?.username}></img>
+              <p className="bold">{user?.username}</p>
+            </Link>
             {
               post?.user.id === sessionUser?.id &&
               <BiDotsHorizontalRounded onClick={() => setOptionsModal(true)} />

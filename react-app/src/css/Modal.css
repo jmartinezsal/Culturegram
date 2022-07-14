@@ -277,6 +277,11 @@
 	padding: 5px 0px 5px 20px;
 }
 
+.post-modal-view .post-modal-right .top a {
+	display: flex;
+	align-items: center;
+}
+
 .post-modal-view .post-modal-right .top .react-icons{
 	margin-left: auto;
 	margin-right: 20px;
