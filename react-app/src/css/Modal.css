@@ -26,7 +26,7 @@
 	position: absolute;
 	background-color: rgb(255, 255, 255);
 	box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.495);
-	border-radius: 20px;
+	border-radius: 10px;
 }
 
 /* CREATE and UPDATE post modal styles */
@@ -243,8 +243,8 @@
 
 /* Post Modal styles */
 .post-modal-view {
-	width: 700px;
-	height: 500px;
+	width: 120vh;
+	height: 80vh;
 	display: flex;
 }
 
@@ -254,8 +254,8 @@
 
 
 .post-modal-view .slider img {
-	width: 350px;
-	height: 500px;
+	width: 55vh;
+	height: 80vh;
 	box-sizing: border-box;
 	object-fit: cover;
 	border-right: var(--main-border);
@@ -265,7 +265,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 500px;
+	height: 100%;
 }
 
 .post-modal-view .post-modal-right .top {
@@ -284,8 +284,8 @@
 }
 
 .post-modal-right .comment-container {
-	width: 350px;
-	height: 400px;
+	width: 100%;
+	height: 80%;
 	overflow-y: scroll;
 	box-sizing: border-box;
 	padding: 0px 20px;
@@ -294,6 +294,7 @@
 
 .post-modal-view .post-modal-right .comment {
 	height: fit-content;
+	width: 60vh;
 }
 
 .comment-container::-webkit-scrollbar {
@@ -308,7 +309,7 @@
 
 .post-modal-view .post-modal-right .bold {
 	font-size: 14px;
-	margin-right: 5px;
+	margin-right: 15px;
 }
 .post-modal-view .post-modal-right .comment-top .contained{
 	max-width: 50%;

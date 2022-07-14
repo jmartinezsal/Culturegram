@@ -1,0 +1,17 @@
+
+.post-view{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-view .post-modal-view{
+  border: var(--main-border);
+  
+}
+
+.post-modal-view .post-modal-right{
+  border-left: var(--main-border);
+}
