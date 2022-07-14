@@ -12,9 +12,11 @@ import { authenticate } from './store/session';
 import { loadPosts } from './store/post';
 import { loadComments } from './store/comment';
 import { loadLikes } from './store/like';
+import { loadFollows } from './store/follow';
 import PostView from './components/UserPage/Post/PostView';
 import ProfilePage from './components/UserPage/ProfilePage';
-import { loadFollows } from './store/follow';
+import PageNotFound from './components/PageNotFound';
+import loading from './images/loading.gif'
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ function App() {
   const user = useSelector(state => state.session.user);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       await dispatch(loadPosts());
       await dispatch(loadComments())
@@ -33,30 +35,28 @@ function App() {
   }, [dispatch]);
 
   if (!loaded) {
-    return null;
+    return <img className="loader" src={loading} alt="loader" />;
   }
 
   return (
     <BrowserRouter>
-        {user &&
+      {user &&
         <Navigation />
-        }
+      }
       <Switch>
         <Route path='/' exact={true}>
-          <UserViewPage sessionUser={user}/>
+          <UserViewPage sessionUser={user} />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/posts/:postId' exact={true} >
-          <PostView />
+          <PostView loaded={loaded} />
         </ProtectedRoute>
         <ProtectedRoute path='/:username' exact={true} >
-          <ProfilePage />
+          <ProfilePage loaded={loaded}/>
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <PageNotFound />
       </Switch>
     </BrowserRouter>
   );

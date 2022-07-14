@@ -22,10 +22,14 @@ export function timeUpdatedAt(updatedAt){
 
 //Checks if the sessionUser has likes a post
 export const likedChecker = (post, sessionUser, likes) => {
-  let likeIds = post.likes;
+  if (!post){
+    return;
+  }
+  let likeIds = post?.likes;
+
   for (const id of likeIds) {
     let userId =  likes[id]?.userId;
-    if(userId ===sessionUser.id) return {[id]: true}
+    if(userId ===sessionUser?.id) return {[id]: true}
   }
   return false;
 }

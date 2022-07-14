@@ -11,8 +11,9 @@ import CommentSection from "../Modal/PostModal/CommentSection"
 import PostOptions from '../Modal/PostOptions';
 import { Modal } from '../../../context/Modal';
 import Like from '../../Tools/Like';
+import PageNotFound from '../../PageNotFound';
 
-function PostView() {
+function PostView({loaded}) {
   const { postId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const post = useSelector(state => state.post[postId]);
@@ -21,6 +22,9 @@ function PostView() {
   const [liked, setLiked] = useState(likedChecker(post, likes, sessionUser))
   const [optionModal, setOptionsModal] = useState(false);
 
+  if(!post && loaded){
+    return <PageNotFound />
+  }
   const user = post?.user;
   return (
     <div className="post-view">

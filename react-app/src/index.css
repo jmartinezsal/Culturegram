@@ -61,5 +61,10 @@ button:hover, .btn:hover{
 
 .react-icons{
   cursor: pointer;
+}
+
+.loader{
+  margin: auto auto;
+  width: 600px;
 
 }

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import PageNotFound from '../../PageNotFound';
 import Follow from '../../Tools/Follow';
 import { iFollow } from '../../Tools/Utils';
 
-function ProfilePage() {
+function ProfilePage({ loaded }) {
   const { username } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const allFollowing = useSelector(state => state.follow);
@@ -13,25 +14,24 @@ function ProfilePage() {
   const [follow, setFollow] = useState();
 
   useEffect(() => {
-    if (!username) {
-      return;
-    }
+
     (async () => {
       const response = await fetch(`/api/users/${username}`);
       const user = await response.json();
       setUser(user)
+
       setFollow(iFollow(sessionUser, user, allFollowing))
     })();
   }, [username]);
 
-  if (!user) {
-    return null;
-  }
   const postIds = user?.posts
   const myPosts = postIds?.map(postId => posts[postId])
 
+  if (!Object.values(user).length && loaded) {
+    return <PageNotFound />;
+  }
 
-
+  console.log(user)
   return (
     <div className="profile-page">
       <div className="profile">
