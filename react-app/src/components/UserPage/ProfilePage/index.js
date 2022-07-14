@@ -20,7 +20,7 @@ function ProfilePage() {
       const response = await fetch(`/api/users/${username}`);
       const user = await response.json();
       setUser(user)
-      setFollow(iFollow(sessionUser,user, allFollowing))
+      setFollow(iFollow(sessionUser, user, allFollowing))
     })();
   }, [username]);
 
