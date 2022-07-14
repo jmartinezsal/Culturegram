@@ -6,7 +6,7 @@
   height: fit-content;
   width: auto;
   border-bottom: var(--main-border);
-	
+
 }
 
 .navigation .right-nav{
@@ -34,6 +34,7 @@
 	align-items: center;
 	justify-content: space-evenly;
 	padding: 5px;
+	cursor: pointer;
 }
 
 .profile-btn img{
@@ -74,7 +75,7 @@
 }
 
 .profile-nav-selection .react-icons{
-  padding-right: 10px
+  padding-right: 10px;
 }
 
 .profile-nav-selection:hover {

@@ -42,7 +42,7 @@ function ProfileButton() {
       {showMenu && (
         <div className='profile-btn-nav' >
           <div className="profile-nav-selection">
-            <Link className="profile" to="/profile">
+            <Link  to={`/${user.username}`}>
               <VscAccount />
               <p className="dropdown-txt">Profile</p>
             </Link>
