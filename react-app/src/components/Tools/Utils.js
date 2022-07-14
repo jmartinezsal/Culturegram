@@ -1,3 +1,4 @@
+//Updates the date of when the post was created or edited
 export function timeUpdatedAt(updatedAt){
   const today = new Date();
   const updated = new Date(updatedAt)
@@ -19,6 +20,7 @@ export function timeUpdatedAt(updatedAt){
   }
 }
 
+//Checks if the sessionUser has likes a post
 export const likedChecker = (post, sessionUser, likes) => {
   let likeIds = post.likes;
   for (const id of likeIds) {
@@ -28,6 +30,7 @@ export const likedChecker = (post, sessionUser, likes) => {
   return false;
 }
 
+//Checks what comments belong to the post
 export const commentsForPost = (post, comments) => {
   let commentsId = post.comments;
   let commentsFiltered = [];
@@ -35,4 +38,15 @@ export const commentsForPost = (post, comments) => {
     commentsFiltered.push(comments[id])
   }
   return commentsFiltered;
+}
+
+//Checks if the current session user follows a person
+export const iFollow = (sessionUser, user, following) =>{
+  for(let i = 0; i < sessionUser.following.length; i++){
+    const userFollowingId = sessionUser.following[i]
+    if(following[userFollowingId]?.following_id === user.id){
+     return {[userFollowingId]: true};
+    }
+  }
+  return false;
 }
