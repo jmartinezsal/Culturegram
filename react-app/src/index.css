@@ -4,6 +4,8 @@
 @import url('./css/Modal.css');
 @import url('./css/Tools.css');
 @import url('./css/HomePage.css');
+@import url('./css/PostViewPage.css');
+@import url('./css/ProfilePage.css');
 
 
 :root {
@@ -55,4 +57,9 @@ button:hover, .btn:hover{
 	object-fit: contain;
 	border-radius: 50%;
 	margin-right: 10px;
+}
+
+.react-icons{
+  cursor: pointer;
+
 }

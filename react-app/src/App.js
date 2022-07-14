@@ -13,6 +13,8 @@ import { loadPosts } from './store/post';
 import { loadComments } from './store/comment';
 import { loadLikes } from './store/like';
 import PostView from './components/UserPage/Post/PostView';
+import ProfilePage from './components/UserPage/ProfilePage';
+import { loadFollows } from './store/follow';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ function App() {
       await dispatch(loadPosts());
       await dispatch(loadComments())
       await dispatch(loadLikes())
+      await dispatch(loadFollows())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -48,8 +51,8 @@ function App() {
         <ProtectedRoute path='/posts/:postId' exact={true} >
           <PostView />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute path='/:username' exact={true} >
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>

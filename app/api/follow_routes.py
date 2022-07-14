@@ -11,24 +11,18 @@ def all_follows():
   return {follow.id: follow.to_dict() for follow in follows}
 
 
-@follow_routes.route('', methods=["POST"])
+@follow_routes.route('/<int:following_id>', methods=["POST"])
 @login_required
-def follow():
-  form = FollowingForm()
-  data = form.data
+def follow(following_id):
 
-  form['csrf_token'].data = request.cookies['csrf_token']
-
-  if form.validate_on_submit():
     new_follow = User_Following(
       follower_id = current_user.to_dict()['id'],
-      following_id = data['following_id'],
-      blocked = data['blocked']
+      following_id = following_id,
     )
 
     db.session.add(new_follow)
     db.session.commit()
-    return {"success": "You are now following this person"}
+    return new_follow.to_dict()
 
 
 @follow_routes.route('<int:user_following_id>', methods=["PUT"])
@@ -52,7 +46,7 @@ def updateFollow(user_following_id):
 @follow_routes.route('<int:user_following_id>', methods=["DELETE"])
 @login_required
 def unfollow(user_following_id):
-  following = User_Following.query.filter(User_Following.id==user_following_id).first()
+  following = User_Following.query.get(user_following_id)
 
   db.session.delete(following)
   db.session.commit()

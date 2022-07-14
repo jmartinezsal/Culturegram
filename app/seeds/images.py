@@ -16,7 +16,7 @@ def seed_images():
 
     Image(post_id=5, url="http://www.dailyherald.com/storyimage/DA/20180603/NEWS/180609746/AR/0/AR-180609746.jpg"),
 
-    Image(post_id=6, url="https://www.cravebits.com/wp-url/uploads/2014/07/chin3-1728x800_c.jpg"),
+    Image(post_id=6, url="https://www.eagerreaders.in/wp-content/uploads/2019/02/Chinese-New-Year.jpg"),
 
     Image(post_id=7, url="https://ramatniseko.com/wp-content/uploads/shutterstock_193421459_min-e1560128306371.jpg"),
     Image(post_id=7, url="http://blog.luulla.com/wp-content/uploads/2017/04/japanese-culture.jpg"),
@@ -58,7 +58,7 @@ def seed_images():
 
     Image(post_id=23, url="https://i1.wp.com/www.ecologicaladventure.com/wp-content/uploads/2016/09/Maasai-man-1.jpg"),
 
-    Image(post_id=24, url="http://i.dawn.com/primary/2013/10/524bf86a972d8.jpg"),
+    Image(post_id=24, url="https://en-academic.com/pictures/enwiki/80/Pakistani_young_girls.jpg"),
     Image(post_id=24, url="http://4.bp.blogspot.com/-Y_KSfbdzGHk/T0shHkVw2pI/AAAAAAAAAXg/y0vbeTJgpoE/s1600/7557403-lg.jpg")
   ]
 

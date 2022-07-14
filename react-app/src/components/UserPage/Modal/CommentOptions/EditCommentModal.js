@@ -26,10 +26,10 @@ function EditCommentModal({ currComment, setEditModal, setOptionsModal }) {
       "id": currComment.id,
       comment
     }
-    await dispatch(updateComment(payload))
-    await dispatch(loadPosts())
     setOptionsModal(false)
     setEditModal(false)
+    await dispatch(updateComment(payload))
+    await dispatch(loadPosts())
   }
 
   const changeComment = (e) => {

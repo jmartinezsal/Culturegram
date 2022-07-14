@@ -32,7 +32,6 @@ function ModalSubmit({ images, Previous, setCreateModal }) {
         "url": image.name.replace(/ /g,"+"),
         "post_id": post_id,
       };
-
       await dispatch(uploadImage(imageData));
   }
   }
@@ -47,10 +46,10 @@ function ModalSubmit({ images, Previous, setCreateModal }) {
     let post = await dispatch(createPost(data))
     const post_id = post.id;
     if (Number.isInteger(post_id)) {
-      await addImages(imageFiles, post_id)
+     await addImages(imageFiles, post_id)
+     await dispatch(loadPosts())
+     setCreateModal(false);
       history.push('/')
-      setCreateModal(false);
-      await dispatch(loadPosts())
     }
     setErrors(post);
   }
