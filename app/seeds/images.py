@@ -10,7 +10,7 @@ def seed_images():
 
     Image(post_id=2,  url="https://www.tnminoritypages.com/wp-content/uploads/2020/03/Celebrate-Nashville-Photo-1--scaled.jpg"),
 
-    Image(post_id=3, url="http://www.visitturkanaland.com/wp-content/uploads/2014/03/Fiebig-Turkana-7687.jpg"),
+    Image(post_id=3, url="https://pbs.twimg.com/media/FDbJRF-XIAETzYT.jpg"),
 
     Image(post_id=4, url="https://usercontent2.hubstatic.com/5443259_f1024.jpg"),
 
@@ -36,13 +36,13 @@ def seed_images():
 
     Image(post_id=13, url="https://routeprints.com/wp-content/uploads/2019/05/Rajasthan-Tradition-1.png"),
 
-    Image(post_id=14, url="http://www.studyinhungary.hu/static/upload/dance-sih.jpg"),
+    Image(post_id=14, url="https://budapesttickets.com/wp-content/uploads/2019/05/Hungarian-Folk-Show-1.jpg"),
 
     Image(post_id=15, url="https://img.jakpost.net/c/2019/07/28/2019_07_28_77094_1564312875._large.jpg"),
 
     Image(post_id=16, url="https://dsctnb75btila.cloudfront.net/uploads/tour_image/file/58fafafd-4fa6-43a2-bea1-6aa934a466b9/fa2e73d0-4c34-4b0f-8347-6cb05df77522.jpg"),
 
-    Image(post_id=17, url="http://static.thanhniennews.com/Uploaded/thuyvi/2016_06_03/8_EELV.JPG"),
+    Image(post_id=17, url="https://images.pexels.com/photos/2477374/pexels-photo-2477374.jpeg"),
 
     Image(post_id=18, url="https://i1.wp.com/www.travelsignposts.com/Ireland/files/2016/03/irishgroup_1920.jpg?fit=1920%2C1125&ssl=1"),
 

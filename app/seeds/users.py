@@ -8,10 +8,12 @@ def seed_users():
         first_name='Demo', last_name='User', bio="This is a demo account and can be used as a tester for the functionality of the website.")
     marnie = User(
         username='marnie32', email='marnie@aa.io', password='password123',
-            first_name='Marnie', last_name='Smith', bio="This is a demo account and can be used as a tester for the functionality of the website.")
+            first_name='Marnie', last_name='Smith', bio="It's so beautiful being part of other cultures and seeing them represented.",
+            profile_picture="https://xsgames.co/randomusers/assets/avatars/female/60.jpg")
     bobbie = User(
         username='cultureLover', email='bobbie@aa.io', password='password123456',
-        first_name='Jay', last_name='Cruz', bio="This is a demo account and can be used as a tester for the functionality of the website.")
+        first_name='Jay', last_name='Cruz', bio="I love to travel and see the culture all around the world.",
+        profile_picture="https://xsgames.co/randomusers/assets/avatars/male/74.jpg")
 
     db.session.add(demo)
     db.session.add(marnie)
