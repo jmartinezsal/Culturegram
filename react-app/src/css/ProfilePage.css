@@ -31,8 +31,9 @@
 }
 
 .profile-header-right{
-  width: 80%
+  width: 75%;
 }
+
 .profile-header .username{
   font-weight: 300;
   font-size: 30px;
@@ -41,34 +42,39 @@
 .profile-header .profile-info{
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .profile-header .profile-info .info-section{
-display: flex;
-align-items: center;
-margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
 }
 
 .profile-header .profile-info .info-section .length{
-font-weight: 700;
-margin-right: 5px;
+  font-weight: 700;
+  margin-right: 5px;
 }
 
 .profile-header .profile-info .info-section  .info-name{
   color: rgb(77, 76, 76);
+  margin-right: 20px;
 }
 
 .profile-header .profile-about .bold{
   margin-bottom: 5px;
 }
 
+.profile-about{
+  word-wrap: break-word;
+}
+
 .my-post-container{
-  width: 650px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   box-sizing: content-box;
+  margin-top: 10px;
 }
 
 
