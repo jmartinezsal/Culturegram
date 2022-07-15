@@ -6,12 +6,13 @@
 @import url('./css/HomePage.css');
 @import url('./css/PostViewPage.css');
 @import url('./css/ProfilePage.css');
+@import url('./css/AboutMePage.css');
 
 
 :root {
   --main-border: 1px solid #bfbfbf82;
   --btn-opacity-transition: opacity 1s ease-in-out;
-  --btn-opacity: .8;
+  --btn-opacity: .7;
   --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 

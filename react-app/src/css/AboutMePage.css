@@ -1,0 +1,63 @@
+/*Styles for the about me apge */
+
+.about-me{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-me-card{
+  height: fit-content;
+  width: 350px;
+  border: var(--main-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px 20px;
+  background-color: whitesmoke;
+  text-align: center;
+	box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.495);
+}
+
+.about-me-card .name{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.about-me-card img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 30px 0px;
+}
+
+.about-me-card .bio {
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 1.5rem;
+}
+
+.about-me-card .bio a{
+  text-decoration: underline;
+}
+.about-me-card .link-btns{
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-me-card .link-btns a {
+   display: flex;
+   align-items: center;
+   margin-right: 20px;
+}
+
+.about-me-card .link-btns .react-icons{
+  margin-right: 5px;
+}

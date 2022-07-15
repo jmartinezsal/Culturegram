@@ -29,8 +29,10 @@ const SignUpForm = () => {
       } else {
         return;
       }
-    };
-    errors.push("Password does not match");
+    }else{
+      
+      errors.push("Password does not match");
+    }
     setErrors(errors)
   }
 

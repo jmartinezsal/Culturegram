@@ -3,6 +3,8 @@ import ProfileButton from './Profilebutton';
 import {  VscHome } from 'react-icons/vsc';
 import { Link, NavLink } from 'react-router-dom';
 import CreatePostButton from '../Modal/CreatePost';
+import {SiAboutdotme} from 'react-icons/si';
+
 
 
 function Navigation() {
@@ -18,6 +20,9 @@ function Navigation() {
           <VscHome className='nav-icons' />
         </NavLink>
           <CreatePostButton />
+        <NavLink to="/about-me" exact={true}>
+          <SiAboutdotme className='nav-icons' />
+        </NavLink>
         <ProfileButton />
       </div>
     </div>

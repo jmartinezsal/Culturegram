@@ -30,7 +30,7 @@ function PostCard({ post }) {
   const user = post.user;
 
 
-  const [liked, setLiked] = useState(likedChecker(post, likes, sessionUser))
+  const [liked, setLiked] = useState(likedChecker(post,  sessionUser,likes))
 
 
 

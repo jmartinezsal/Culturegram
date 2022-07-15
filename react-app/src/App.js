@@ -17,6 +17,7 @@ import PostView from './components/UserPage/Post/PostView';
 import ProfilePage from './components/UserPage/ProfilePage';
 import PageNotFound from './components/PageNotFound';
 import loading from './images/loading.gif'
+import AboutMe from './components/UserPage/AboutMePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path='/about-me' exact={true} >
+          <AboutMe />
+        </ProtectedRoute>
         <ProtectedRoute path='/posts/:postId' exact={true} >
           <PostView loaded={loaded} />
         </ProtectedRoute>
