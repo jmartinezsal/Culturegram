@@ -73,13 +73,13 @@ const SignUpForm = () => {
         <form className="sign-up-auth" onSubmit={onSignUp}>
           <div className="left-auth-signup">
             <img className='auth-logo' src={authlogo} alt="authlogo" />
-              <p className="bold">Sign up, display your culture and see all other culture's across the world.</p>
+            <p className="bold">Sign up, display your culture and see all other culture's across the world.</p>
             <div className='auth-errors'>
               {errors.map((error, ind) => (
-                <div key={ind}>{ind+1}. {error.includes(':') ? error.split(':')[1] : error}</div>
+                <div key={ind}>{ind + 1}. {error.includes(':') ? error.split(':')[1] : error}</div>
               ))}
-          </div>
             </div>
+          </div>
           <div className="auth-input-container">
             <div className='pair-inputs'>
               <input
@@ -143,11 +143,11 @@ const SignUpForm = () => {
               ></input>
             </div>
             <button className="auth-btn" type='submit'>Sign Up</button>
-          <div className='sign-up-link'>
-          <p>Already have an account? <Link to="/" className="bold">Log in</Link> </p>
-        </div>
+            <div className='sign-up-link'>
+              <p>Already have an account? <Link to="/" className="bold">Log in</Link> </p>
+            </div>
           </div>
-                </form>
+        </form>
       </div>
     </div>
   );
