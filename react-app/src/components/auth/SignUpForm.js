@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import authlogo from '../../images/auth-logo.svg'
 
@@ -14,8 +14,7 @@ const SignUpForm = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [bio, setBio] = useState('');
-
-
+  const [currentStep, setCurrentStep] = useState(1);
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -23,16 +22,16 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     let errors = [];
     e.preventDefault();
-   if (password === repeatPassword) {
-      const data = await dispatch(signUp({username, email, password, firstName, lastName, bio }));
+    if (password === repeatPassword) {
+      const data = await dispatch(signUp({ username, email, password, firstName, lastName, bio }));
       if (data) {
         errors = data;
-      }else{
+      } else {
         return;
       }
     };
-   errors.push("Password does not match");
-   setErrors(errors)
+    errors.push("Password does not match");
+    setErrors(errors)
   }
 
   const updateUsername = (e) => {
@@ -74,16 +73,15 @@ const SignUpForm = () => {
         <form className="sign-up-auth" onSubmit={onSignUp}>
           <div className="left-auth-signup">
             <img className='auth-logo' src={authlogo} alt="authlogo" />
-            <p>Sign up, display your culture and see all other culture's across the world.</p>
+              <p className="bold">Sign up, display your culture and see all other culture's across the world.</p>
             <div className='auth-errors'>
               {errors.map((error, ind) => (
-                <div key={ind}>{error.includes(':') ? error.split(':')[1] : error}</div>
+                <div key={ind}>{ind+1}. {error.includes(':') ? error.split(':')[1] : error}</div>
               ))}
-            </div>
           </div>
+            </div>
           <div className="auth-input-container">
-            <div className="left-inputs">
-
+            <div className='pair-inputs'>
               <input
                 placeholder='First Name'
                 type='text'
@@ -98,6 +96,9 @@ const SignUpForm = () => {
                 onChange={updateLastName}
                 value={lastName}
               ></input>
+            </div>
+            <div className='pair-inputs'>
+
               <input
                 placeholder='User Name'
                 type='text'
@@ -113,16 +114,18 @@ const SignUpForm = () => {
                 value={email}
               ></input>
             </div>
-            <div className="right-inputs">
+            <textarea
+              placeholder='Bio'
+              type='text'
+              name='bio'
+              onChange={updateBio}
+              value={bio}
+              minLength={3}
+              maxLength={255}
+            >
+            </textarea>
+            <div className='pair-inputs'>
 
-              <textarea
-                placeholder='Bio'
-                type='text'
-                name='bio'
-                onChange={updateBio}
-                value={bio}
-              >
-              </textarea>
               <input
                 placeholder='Password'
                 type='password'
@@ -138,10 +141,13 @@ const SignUpForm = () => {
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
               ></input>
-            <button type='submit'>Sign Up</button>
             </div>
+            <button className="auth-btn" type='submit'>Sign Up</button>
+          <div className='sign-up-link'>
+          <p>Already have an account? <Link to="/" className="bold">Log in</Link> </p>
+        </div>
           </div>
-        </form>
+                </form>
       </div>
     </div>
   );

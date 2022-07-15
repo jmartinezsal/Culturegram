@@ -126,37 +126,61 @@
   background-repeat: no-repeat;
   background-position: center;
 
+
 }
 .sign-up-auth {
   width: 800px;
   max-width: fit-content;
-  height: 400px;
+  height: fit-content;
   display: flex;
-  align-items: center;
   background-color: white;
+  padding: 10px;
+  opacity: .97;
+}
+
+.sign-up-auth .auth-errors{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  height: 80px;
+  text-align: left;
+}
+.sign-up-auth .auth-errors div{
+  margin-right: 10px;
 }
 
 .sign-up-auth img{
-  width: 60%;
-
+  width: 100%;
 }
 .signup-page .left-auth-signup{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  width: 40%;
+  width: 100%;
+  margin-right: 20px;
 }
 
 .sign-up-auth .auth-input-container{
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
 }
 
-.auth-input-container .left-inputs{
-  width: 30%;
+.sign-up-auth .auth-input-container .pair-inputs{
+  display: flex;
+  box-sizing: border-box;
 }
-.auth-input-container .right-inputs{
-width: 60%;
+
+.sign-up-auth .auth-input-container .pair-inputs input{
+  margin-right: 10px;
+}
+.sign-up-auth .auth-input-container textarea{
+  resize: none;
+  height: 50px;
+}
+
+.sign-up-auth .auth-input-container button{
+  width: 50%;
+  margin: 0 auto;
+  height: 25px;
 }

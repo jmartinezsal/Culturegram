@@ -65,7 +65,7 @@ function ProfilePage({ loaded }) {
         <div className="my-post-container">
           {myPosts?.length === 0
             ?
-            <p>You currently have no pictures in your profile</p>
+            <p className="bold"> You currently have no pictures in your profile.</p>
             :
             myPosts?.map((post) => (
               <Link to={`/posts/${post.id}`} key={post.id}>
