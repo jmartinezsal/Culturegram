@@ -1,4 +1,49 @@
-# Flask React Project
+# Culturegram
+
+This is a clone of the popular website, Instagram.  We currently have full CRUD features on
+Posts and comments.  Have a liking system to be able to like and unlike posts and show how many likes a post has.
+
+I have also implemented AWS S3 to be able to store images of the posts.
+
+## Links
+* [Live Site](https://culture-gram.herokuapp.com/)
+* [Database Schema](https://github.com/jmartinezsal/Culturegram/wiki/Database-Schema)
+* [MVP Feature List](https://github.com/jmartinezsal/Culturegram/wiki/MVP-Feature-List)
+
+
+## Technologies Used
+
+### Hosting Service
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+
+### Testing
+
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+
+### Backend
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+
+### Frontend
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+
+## Upcoming Features
+* Following others and filtering the posts through the people you like
+* Profile updating and deleting
+* Adding a search system to be able to search for posts, users and other...
+* Adding a hastags to be able to posts to be able to filter through post s
+* Creating a chat feature to be able to speak to other users
+* Possibly adding locations to posts with Google API
+
+<!-- # Flask React Project
 
 This is the starter for the Flask React project.
 
@@ -50,14 +95,14 @@ This is the starter for the Flask React project.
 ### Dev Containers (OPTIONAL for M1 Users)
 The following instructions detail an *optional* development setup for M1 Mac users having issues with the `psycopg` package.
 
-1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed. 
-2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer. 
+1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed.
+2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer.
 3. Clone the repository (only this branch)
    ```bash
    git clone https://github.com/appacademy-starters/python-project-starter.git
    ```
-4. Open the repo in VS Code. 
-5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner. 
+4. Open the repo in VS Code.
+5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner.
 6. **Be Patient!** The initial install will take a LONG time, it's building a container that has postgres preconfigured and even installing all your project dependencies. (For both flask and react!)
 
    **Note:** This will take much less time on future starts because everything will be cached.
@@ -87,7 +132,7 @@ The following instructions detail an *optional* development setup for M1 Mac use
 <br>
 
 ## Deploy to Heroku
-This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations. 
+This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations.
 
 1. Write your Dockerfile. In order for the Github action to work effectively, it must have a configured Dockerfile. Follow the comments found in this [Dockerfile](./Dockerfile) to write your own!
 
@@ -126,4 +171,4 @@ each of the following variables:
 | `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
 | `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
 | `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku | -->
