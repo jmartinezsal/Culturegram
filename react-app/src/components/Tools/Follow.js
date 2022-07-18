@@ -23,7 +23,7 @@ function Follow({follow, setFollow, following_id}){
     setDisable(false)
     }, [500])
   }
-  console.log(follow)
+
   return(
     <div className="follow-container" onClick={onClickFollow}>
     {

@@ -23,7 +23,6 @@ function ProfilePage({ loaded }) {
     })();
   }, [username]);
 
-  console.log(user)
   const postIds = user?.posts
   const myPosts = postIds?.map(postId => posts[postId])
 
